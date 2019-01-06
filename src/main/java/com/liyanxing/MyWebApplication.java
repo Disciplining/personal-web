@@ -1,9 +1,11 @@
 package com.liyanxing;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@MapperScan("com.liyanxing.project.commonuser.mapper")
 public class MyWebApplication
 {
     public static void main(String[] args)
