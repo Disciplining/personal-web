@@ -3,6 +3,7 @@ package com.liyanxing.project.commonuser.controller;
 import com.liyanxing.project.commonuser.pojo.CommonUser;
 import com.liyanxing.project.commonuser.service.CommonUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,6 +17,7 @@ import java.util.List;
 public class CommonUserController
 {
     @Autowired
+    @Qualifier("commonUserServiceImpl")
     private CommonUserService service;
 
     /**
