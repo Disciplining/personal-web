@@ -8,6 +8,7 @@ spring:
     username: root
     password: root123
 
+# 开启下划线命名与驼峰命名自动转换
 mybatis:
   configuration:
     mapUnderscoreToCamelCase: true
