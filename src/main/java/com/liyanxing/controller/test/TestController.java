@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 测试控制器
  */
@@ -26,5 +29,15 @@ public class TestController
     public String getRe(CommonUser commonUser)
     {
         return commonUser.toString();
+    }
+
+    @GetMapping("/ajaxTest")
+    @ResponseBody
+    public Map<String,Boolean> ajaxTest()
+    {
+        Map<String,Boolean> map = new HashMap<>(1);
+        map.put("reg", true);
+
+        return map;
     }
 }

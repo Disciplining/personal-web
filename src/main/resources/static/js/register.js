@@ -2,6 +2,7 @@ $(  function ()
     {
         datePlugin();
         bootStrapVid();
+        checkoutName();
     }
 );
 
@@ -16,18 +17,6 @@ function datePlugin()
                                         locale: moment.locale('zh-cn')
                                     }
                                  );
-}
-
-/**
- * 阻止提交按钮提交表单
- */
-function preventSubmit()
-{
-    $('#submit').unbind('click').bind('click',    function (e)
-                                                    {
-                                                        e.preventDefault();
-                                                    }
-                                       )
 }
 
 /**
@@ -47,7 +36,7 @@ function bootStrapVid()
 
             fields:
                 {
-                    name:
+                    userName:
                         {
 
                             validators:
@@ -115,3 +104,54 @@ function bootStrapVid()
         }
     );
 }
+
+/*-----------------------------检查用户名是否已被注册-----------------------------*/
+/**
+ * 检查用户名是否已被注册
+ */
+function checkoutName()
+{
+    $('#userName').unbind('blur')
+        .bind
+        (
+            'blur',
+            function ()
+            {
+            }
+        );
+}
+
+/**
+ * 阻止提交按钮提交表单
+ */
+function preventSubmit()
+{
+    $('#submitData').unbind('click')
+        .bind
+        (
+            'click',
+            function (e)
+            {
+                e.preventDefault();
+            }
+        );
+}
+
+/**
+ * 发送ajax查询
+ */
+function sendAjax()
+{
+    $.ajax
+    (
+        {
+            url : '/ajaxTest',
+            type : 'GET',
+            dataType : 'text',
+            success : function (respnse)
+            {
+            }
+        }
+    );
+}
+/*-----------------------------检查用户名是否已被注册结束-----------------------------*/
