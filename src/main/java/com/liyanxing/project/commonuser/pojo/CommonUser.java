@@ -73,4 +73,10 @@ public class CommonUser
     public void setEmail(String email) {
         this.email = email == null ? null : email.trim();
     }
+
+    @Override
+    public String toString()
+    {
+        return "CommonUser{" + "commonUserId=" + commonUserId + ", name='" + name + '\'' + ", password='" + password + '\'' + ", salt='" + salt + '\'' + ", sex=" + sex + ", birthday=" + birthday + ", email='" + email + '\'' + '}';
+    }
 }
