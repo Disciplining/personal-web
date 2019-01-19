@@ -33,4 +33,14 @@ public class CommonUserController
     {
         return service.selectAllCommonUser();
     }
+
+    /**
+     * 跳转到用户注册页面
+     * @return
+     */
+    @GetMapping("/toRegister")
+    public String toRegister()
+    {
+        return "register";
+    }
 }

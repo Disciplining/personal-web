@@ -145,23 +145,19 @@ function sendAjax()
                 },
             success : function (response)
             {
-                if(response.msg == true)
+                if(response.msg == true) //查询到用户名已被注册时要做的事
                 {
-                    doWenHasReg();
+                    preventSubmit(); //阻止提交表单
+                    $('#has-reg').css('display', 'block'); //显示提示
+                }
+                else //查询到用户名未被注册时要做的事
+                {
+                    $('#has-reg').css('display', 'none'); //取消显示提示
+                    $('#submitData').unbind('click');
                 }
             }
         }
     );
-}
-
-/**
- * 当查询到该用户已被注册时做的事情
- */
-function doWenHasReg()
-{
-    // preventSubmit(); //阻止白提交表单
-    // alert('testaa');
-    $('#has-reg').css('display', 'block'); //显示提示
 }
 
 /**
