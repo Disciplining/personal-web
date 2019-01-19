@@ -115,10 +115,53 @@ function checkoutName()
         .bind
         (
             'blur',
-            function ()
+            function () //失去焦点时要做的事情
             {
+                if ($(this).val() != '') //在失去焦点时，只有用户输入了数据才发送ajax
+                {
+                    sendAjax();
+                }
             }
         );
+}
+
+/**
+ * 发送ajax查询
+ */
+function sendAjax()
+{
+    var hasReg;
+    var inputName = $('#userName').val();
+    $.ajax
+    (
+        {
+            url : '/ajaxTest',
+            type : 'GET',
+            dataType : 'json',
+            data: {name : inputName},
+            headers:
+                {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+                },
+            success : function (response)
+            {
+                if(response.msg == true)
+                {
+                    doWenHasReg();
+                }
+            }
+        }
+    );
+}
+
+/**
+ * 当查询到该用户已被注册时做的事情
+ */
+function doWenHasReg()
+{
+    // preventSubmit(); //阻止白提交表单
+    // alert('testaa');
+    $('#has-reg').css('display', 'block'); //显示提示
 }
 
 /**
@@ -135,23 +178,5 @@ function preventSubmit()
                 e.preventDefault();
             }
         );
-}
-
-/**
- * 发送ajax查询
- */
-function sendAjax()
-{
-    $.ajax
-    (
-        {
-            url : '/ajaxTest',
-            type : 'GET',
-            dataType : 'text',
-            success : function (respnse)
-            {
-            }
-        }
-    );
 }
 /*-----------------------------检查用户名是否已被注册结束-----------------------------*/

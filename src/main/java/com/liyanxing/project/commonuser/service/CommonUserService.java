@@ -11,4 +11,11 @@ public interface CommonUserService
      * @return
      */
     List<CommonUser> selectAllCommonUser();
+
+    /**
+     * 根据用户名查询一个用户
+     * @param name
+     * @return
+     */
+    CommonUser selectAbyName(String name);
 }

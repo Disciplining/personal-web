@@ -1,36 +1,35 @@
 package com.liyanxing.project.commonuser.controller;
 
 import com.liyanxing.project.commonuser.pojo.CommonUser;
+import com.liyanxing.project.commonuser.pojo.CommonUserParame;
 import com.liyanxing.project.commonuser.service.CommonUserService;
+import com.liyanxing.project.commonuser.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
-
 /**
- * 和普通用户相关的控制器
+ * 处理用户的注册
  */
 @Controller
 @RequestMapping("/commonuser")
-public class CommonUserController
+public class Register
 {
     @Autowired
     @Qualifier("commonUserServiceImpl")
     private CommonUserService service;
 
-    /**
-     * 查询所有普通用户的所有信息
-     *
-     * @return
-     */
-    @GetMapping("/selectAllCommonUser")
+    @PostMapping("/register")
     @ResponseBody
-    public List<CommonUser> selectAllCommonUser()
+    public String register(CommonUserParame user, BindingResult bindingResult)
     {
-        return service.selectAllCommonUser();
+        CommonUser commonUser = new CommonUser();
+        Util.parameToPojo(user, commonUser);
+
+        return commonUser.toString();
     }
 }

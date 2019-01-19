@@ -25,4 +25,16 @@ public class CommonUserServiceImpl implements CommonUserService
     {
         return mapper.selectAllCommonUser();
     }
+
+    /**
+     * 根据用户名查询一个用户
+     *
+     * @param name
+     * @return
+     */
+    @Override
+    public CommonUser selectAbyName(String name)
+    {
+        return mapper.selectAbyName(name);
+    }
 }

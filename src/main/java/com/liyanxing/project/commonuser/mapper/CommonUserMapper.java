@@ -17,4 +17,12 @@ public interface CommonUserMapper
      */
     @Select("select * from common_user")
     List<CommonUser> selectAllCommonUser();
+
+    /**
+     * 根据用户名查询一个用户
+     * @param name
+     * @return
+     */
+    @Select("select * from common_user where `name`=#{name}")
+    CommonUser selectAbyName(String name);
 }
