@@ -18,4 +18,10 @@ public interface CommonUserService
      * @return
      */
     CommonUser selectAbyName(String name);
+
+    /**
+     * 插入一个普通用户
+     * @param commonUser
+     */
+    void insertAcommonUser(CommonUser commonUser);
 }

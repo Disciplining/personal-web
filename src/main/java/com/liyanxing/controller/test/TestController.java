@@ -39,29 +39,4 @@ public class TestController
     {
         return service.selectAbyName("李艳兴");
     }
-
-    /**
-     * 已被注册返回trure
-     * 未被注册返回false
-     * @param name
-     * @return
-     */
-    @GetMapping("/ajaxTest")
-    @ResponseBody
-    public Map<String,Boolean> ajaxTest(String name)
-    {
-        Map<String,Boolean> map = new HashMap<>(1);
-        if (service.selectAbyName(name) != null)
-        {
-            map.put("msg", true);
-        }
-        else
-        {
-            map.put("msg", false);
-        }
-
-        System.out.println(map.get("msg"));
-
-        return map;
-    }
 }

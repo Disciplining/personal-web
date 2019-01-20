@@ -1,6 +1,7 @@
 package com.liyanxing.project.commonuser.mapper;
 
 import com.liyanxing.project.commonuser.pojo.CommonUser;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -25,4 +26,11 @@ public interface CommonUserMapper
      */
     @Select("select * from common_user where `name`=#{name}")
     CommonUser selectAbyName(String name);
+
+    /**
+     * 插入一个普通用户
+     * @param commonUser
+     */
+    @Insert("insert into common_user (`name`,`password`,`salt`,`sex`,`birthday`,`email`) values (#{name},#{password},#{salt},#{sex},#{birthday},#{email})")
+    void insertAcommonUser(CommonUser commonUser);
 }

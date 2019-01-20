@@ -37,4 +37,15 @@ public class CommonUserServiceImpl implements CommonUserService
     {
         return mapper.selectAbyName(name);
     }
+
+    /**
+     * 插入一个普通用户
+     *
+     * @param commonUser
+     */
+    @Override
+    public void insertAcommonUser(CommonUser commonUser)
+    {
+        mapper.insertAcommonUser(commonUser);
+    }
 }

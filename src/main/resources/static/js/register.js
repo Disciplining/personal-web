@@ -135,7 +135,7 @@ function sendAjax()
     $.ajax
     (
         {
-            url : '/ajaxTest',
+            url : '/commonuser/hasReg',
             type : 'GET',
             dataType : 'json',
             data: {name : inputName},
