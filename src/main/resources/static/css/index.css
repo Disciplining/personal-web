@@ -41,17 +41,15 @@ body
     height: 30%;
     background: #8a6d3b;
 }
-#first-row div.col-md-offset-2
+#first-row div.col-md-8.col-md-offset-2
 {
     height: 100%;
-    display: table-cell;
-    vertical-align: middle;
-    background: black;
-    color: white;
-}
-/*----------------------------------------------*/
-#second-row
-{
-    height: 70%;
     background: #ac2925;
 }
+#first-row div.col-md-8.col-md-offset-2 h1.text-center
+{
+    font-family: 华文中宋;
+    color: white;
+    background: black;
+}
+/*----------------------------------------------*/
