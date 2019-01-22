@@ -8,44 +8,12 @@
 
         <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/index.css"/>
 
         <!-- jquery -->
         <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
         <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-        <style>
-            html,body
-            {
-                height: 100%;
-                width: 100%;
-                margin:0;
-                padding:0;
-            }
-            body
-            {
-                background:url(/systemImg/bg_index.jpg) no-repeat;
-                width:100%;
-                height:100%;
-                background-size:100% 100%;
-                position:absolute;
-                filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/systemImg/bg_index.jpg',sizingMethod='scale');
-            }
-        </style>
-        <style>
-            #navbar
-            {
-                background-color: rgba(5, 147, 211, 0);
-            }
-            #index-text
-            {
-                color: white;
-            }
-            .navbar #my_navbar ul li a
-            {
-                color: white;
-            }
-        </style>
     </head>
 
     <body>
@@ -66,6 +34,12 @@
 
                         <!--合并区-->
                         <div class="collapse navbar-collapse" id="my_navbar">
+                            <ul class="nav navbar-nav navbar-left">
+                                <li><a href="#">软件推荐</a></li>
+                                <li><a href="#">网站推荐</a></li>
+                                <li><a href="#">资源下载</a></li>
+                                <li><a href="#">给我留言</a></li>
+                            </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>&ensp;登录</a></li>
                                 <li><a href="/commonuser/toRegister"><span class="glyphicon glyphicon-user"></span>&ensp;注册</a></li>
@@ -76,5 +50,15 @@
             </div>
         </nav>
         <!---------------------------- 通栏结束 ---------------------------->
+        <div id="main" class="container">
+            <div id="first-row" class="row">
+                <div class="col-md-offset-2 col-md-8 text-center">
+                   李艳兴的个人网站
+                </div>
+            </div>
+            <div id="second-row" class="row"> <!-- 关于我和支持我 -->
+                <div class="col-md-offset-2 col-md-8">李艳兴的个人网站</div>
+            </div>
+        </div>
     </body>
 </html>
