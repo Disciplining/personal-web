@@ -33,23 +33,57 @@ body
 #main
 {
     height: 85%;
-    background: #1b6d85;
+    /*background: #1b6d85;*/
 }
 /*-------------------第一行----------------------*/
 #first-row
 {
     height: 30%;
-    background: #8a6d3b;
+    /*background: #8a6d3b;*/
 }
 #first-row div.col-md-8.col-md-offset-2
 {
     height: 100%;
-    background: #ac2925;
+    /*background: #ac2925;*/
 }
 #first-row div.col-md-8.col-md-offset-2 h1.text-center
 {
     font-family: 华文中宋;
     color: white;
-    background: black;
+    /*background: black;*/
+    margin-top: 50px;
+}
+/*----------------------------------------------*/
+/*-------------------第二行----------------------*/
+#second-row
+{
+    height: 70%;
+    /*background: #fcfe33;*/
+}
+#second-row div.col-md-8.col-md-offset-2
+{
+    height: 100%;
+    /*background: #aca39a;*/
+}
+
+#about-me,#support-me
+{
+    width: 300px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    border: #aca39a 1px solid;
+    border-radius: 9px;
+    background: rgba(0,0,0,0);
+}
+#support-me
+{
+    margin-top: 20px;
+}
+#about-me:hover,#support-me:hover
+{
+    background: rgba(255,255,255,0.3);
 }
 /*----------------------------------------------*/
