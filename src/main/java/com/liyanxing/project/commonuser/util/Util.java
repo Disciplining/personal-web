@@ -38,30 +38,4 @@ public class Util
         user.setBirthday(parame.getBirthday());
         user.setEmail(parame.getEmail());
     }
-
-    /**
-     * 用户注册时加密用户的密码
-     * 输入密码明文 返回密文与盐值
-     * @param password
-     * @return 第一个是密文  第二个是盐值
-     */
-    public static String[] encryptPassword(String password)
-    {
-        String salt = new SecureRandomNumberGenerator().nextBytes().toHex(); //生成盐值
-        String ciphertext = new Md5Hash(password,salt,3).toString(); //生成的密文
-        String[] strings = new String[]{ciphertext, salt};
-        return strings;
-    }
-
-    /**
-     * 加密用户登录时输入的密码
-     * @param input
-     * @param salt
-     * @return
-     */
-    public static String encryptUserInputPassword(String input, String salt)
-    {
-        String ciphertext = new Md5Hash(input,salt,3).toString(); //生成的密文
-        return ciphertext;
-    }
 }

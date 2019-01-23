@@ -2,6 +2,7 @@ package com.liyanxing.project.commonuser.controller;
 
 import com.liyanxing.project.commonuser.pojo.CommonUser;
 import com.liyanxing.project.commonuser.service.CommonUserService;
+import com.liyanxing.project.commonuser.util.UserLogin;
 import com.liyanxing.project.commonuser.util.Util;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -27,28 +28,17 @@ public class Login
     @PostMapping("/login")
     public String login(CommonUser commonUser, Model model)
     {
-        CommonUser selectUser = service.selectAbyName(commonUser.getName()); //根据用户输入的用户名查询数据库中的用户
-        if(selectUser == null) //用户不存在
+        CommonUser selectUser = service.selectAbyName(commonUser.getName());
+        if(selectUser == null)
         {
             model.addAttribute("no_account", "此用户不存在");
             return "login";
         }
 
-        commonUser.setPassword(Util.encryptUserInputPassword(commonUser.getPassword(), selectUser.getSalt())); //重新设置密码
+        //重新设置密码
+        String s = UserLogin.encryptUserInputPassword(commonUser.getPassword(), selectUser.getSalt());
+        commonUser.setPassword(s);
 
-        Subject subject = SecurityUtils.getSubject(); //获得Subject对象
-        UsernamePasswordToken token = new UsernamePasswordToken(commonUser.getName(), commonUser.getPassword()); //将用户输入的用户名与密码封装到一个UsernamePasswordToken对象中
-        //用Subject对象执行登录方法，没有抛出任何异常说明登录成功
-        try
-        {
-            subject.login(token); //login()方法会调用 Realm类中执行认证逻辑的方法，并将这个参数传递给doGetAuthenticationInfo()方法
-            model.addAttribute("user_name", commonUser.getName());
-            return "index";
-        }
-        catch (IncorrectCredentialsException e) //抛出这个异常说明密码错误
-        {
-            model.addAttribute("error_passwd", "密码错误");
-            return "login";
-        }
+        return UserLogin.userLogin(commonUser, model);
     }
 }

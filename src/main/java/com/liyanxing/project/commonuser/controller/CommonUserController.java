@@ -43,4 +43,14 @@ public class CommonUserController
     {
         return "register";
     }
+
+    /**
+     * 跳转到用户登录页面
+     * @return
+     */
+    @GetMapping("/toLogin")
+    public String toLogin()
+    {
+        return "login";
+    }
 }

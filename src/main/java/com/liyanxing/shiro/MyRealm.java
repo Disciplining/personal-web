@@ -45,6 +45,6 @@ public class MyRealm extends AuthorizingRealm
 
         //下边就是用户存在的情况，只需要判断密码对不对
         //判断密码对不是只需要返回这样一个对象，第二个参数是数据库中正确的密码
-        return new SimpleAuthenticationInfo("", selectUser.getPassword(), "");
+        return new SimpleAuthenticationInfo(selectUser, selectUser.getPassword(), "");
     }
 }

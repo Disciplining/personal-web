@@ -3,10 +3,13 @@ package com.liyanxing.project.commonuser.controller;
 import com.liyanxing.project.commonuser.pojo.CommonUser;
 import com.liyanxing.project.commonuser.pojo.CommonUserParame;
 import com.liyanxing.project.commonuser.service.CommonUserService;
+import com.liyanxing.project.commonuser.util.UserLogin;
+import com.liyanxing.project.commonuser.util.UserRegister;
 import com.liyanxing.project.commonuser.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,19 +37,18 @@ public class Register
      * @return
      */
     @PostMapping("/register")
-    @ResponseBody
-    public String register(CommonUserParame commonUserParame, BindingResult bindingResult)
+    public String register(CommonUserParame commonUserParame, BindingResult bindingResult, Model model)
     {
         CommonUser commonUser = new CommonUser();
         Util.parameToPojo(commonUserParame, commonUser);
 
-        String[] passwdAnSalt = Util.encryptPassword(commonUser.getPassword());
+        String[] passwdAnSalt = UserRegister.encryptPassword(commonUser.getPassword());
         commonUser.setPassword(passwdAnSalt[0]);
         commonUser.setSalt(passwdAnSalt[1]);
 
         service.insertAcommonUser(commonUser);
 
-        return commonUser.toString();
+        return UserLogin.userLogin(commonUser, model); //注册后立马登录
     }
 
     /**
