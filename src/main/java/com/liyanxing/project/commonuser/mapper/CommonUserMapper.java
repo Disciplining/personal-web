@@ -27,6 +27,7 @@ public interface CommonUserMapper
     @Select("select * from common_user where `name`=#{name}")
     CommonUser selectAbyName(String name);
 
+
     /**
      * 插入一个普通用户
      * @param commonUser

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:shiro="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 适配手机 -->
@@ -40,10 +42,26 @@
                                 <li><a href="#">资源下载</a></li>
                                 <li><a href="#">给我留言</a></li>
                             </ul>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>&ensp;登录</a></li>
-                                <li><a href="/commonuser/toRegister"><span class="glyphicon glyphicon-user"></span>&ensp;注册</a></li>
-                            </ul>
+                            <div shiro:notAuthenticated>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>&ensp;登录</a></li>
+                                    <li><a href="/commonuser/toRegister"><span class="glyphicon glyphicon-user"></span>&ensp;注册</a></li>
+                                </ul>
+                            </div>
+                            <div shiro:authenticated>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="dropdown">
+                                        <a id="dropdown-title" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <span th:text="${user_name}"></span>
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul id="dropdown-menu" class="dropdown-menu">
+                                            <li><a href="#">修改密码</a></li>
+                                            <li><a href="#">退出登录</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -71,5 +89,7 @@
                 </div>
             </div>
         </div>
+
+        <div th:text="${msg}"></div>
     </body>
 </html>

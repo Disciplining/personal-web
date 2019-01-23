@@ -49,7 +49,19 @@ public class Util
     {
         String salt = new SecureRandomNumberGenerator().nextBytes().toHex(); //生成盐值
         String ciphertext = new Md5Hash(password,salt,3).toString(); //生成的密文
-        String[] strings = new String[]{salt, ciphertext};
+        String[] strings = new String[]{ciphertext, salt};
         return strings;
+    }
+
+    /**
+     * 加密用户登录时输入的密码
+     * @param input
+     * @param salt
+     * @return
+     */
+    public static String encryptUserInputPassword(String input, String salt)
+    {
+        String ciphertext = new Md5Hash(input,salt,3).toString(); //生成的密文
+        return ciphertext;
     }
 }

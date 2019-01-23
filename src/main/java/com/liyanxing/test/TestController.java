@@ -1,4 +1,4 @@
-package com.liyanxing.controller.test;
+package com.liyanxing.test;
 
 import com.liyanxing.project.commonuser.pojo.CommonUser;
 import com.liyanxing.project.commonuser.service.CommonUserService;
@@ -7,13 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * 测试控制器
@@ -30,7 +24,7 @@ public class TestController
     {
 //        model.addAttribute("msg","此用户名已被注册!");
 
-        return "register";
+        return "login";
     }
 
     @GetMapping("/getRe")
