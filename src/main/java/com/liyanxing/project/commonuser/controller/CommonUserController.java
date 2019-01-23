@@ -2,6 +2,7 @@ package com.liyanxing.project.commonuser.controller;
 
 import com.liyanxing.project.commonuser.pojo.CommonUser;
 import com.liyanxing.project.commonuser.service.CommonUserService;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.security.auth.Subject;
 import java.util.List;
 
 /**
@@ -52,5 +54,16 @@ public class CommonUserController
     public String toLogin()
     {
         return "login";
+    }
+
+    /**
+     * 注销登录
+     * @return
+     */
+    @GetMapping("/logout")
+    public String logout()
+    {
+        SecurityUtils.getSubject().logout();
+        return "index";
     }
 }
