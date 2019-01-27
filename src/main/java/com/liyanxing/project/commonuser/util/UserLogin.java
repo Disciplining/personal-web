@@ -1,6 +1,7 @@
 package com.liyanxing.project.commonuser.util;
 
 import com.liyanxing.project.commonuser.pojo.CommonUser;
+import com.liyanxing.shiro.token.CommonUserToken;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -32,7 +33,7 @@ public class UserLogin
     public static String userLogin(CommonUser user, Model model)
     {
         Subject subject = SecurityUtils.getSubject(); //获得Subject对象
-        UsernamePasswordToken token = new UsernamePasswordToken(user.getName(), user.getPassword()); //将用户输入的用户名写密码封装到一个UsernamePasswordToken对象中
+        UsernamePasswordToken token = new CommonUserToken(user.getName(), user.getPassword()); //将用户输入的用户名写密码封装到一个UsernamePasswordToken对象中
 
         //用Subject对象执行登录方法，没有抛出任何异常说明登录成功
         try

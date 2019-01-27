@@ -17,4 +17,12 @@ public interface AdminUserMapper
      */
     @Select("select * from admin_user")
     List<AdminUser> selectAllAdminUser();
+
+    /**
+     * 根据名称查询一个管理员
+     * @param name
+     * @return
+     */
+    @Select("select * from admin_user where `name`=#{name}")
+    AdminUser selectAbyName(String name);
 }

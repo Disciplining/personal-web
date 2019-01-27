@@ -37,4 +37,14 @@ public class AdminUser
     {
         this.password = password == null ? null : password.trim();
     }
+
+    @Override
+    public String toString()
+    {
+        return "AdminUser{" +
+                "adminUserId=" + adminUserId +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

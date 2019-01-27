@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * 和普通用户相关的控制器
  */
-@Controller
+@Controller("commonUserController")
 @RequestMapping("/commonuser")
 public class CommonUserController
 {
@@ -63,7 +63,7 @@ public class CommonUserController
     @GetMapping("/logout")
     public String logout()
     {
-        SecurityUtils.getSubject().logout();
+        SecurityUtils.getSubject().logout(); //注销登录
         return "index";
     }
 }

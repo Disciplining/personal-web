@@ -11,4 +11,11 @@ public interface AdminUserService
      * @return
      */
     List<AdminUser> selectAllAdminUser();
+
+    /**
+     * 根据名称查询一个管理员
+     * @param name
+     * @return
+     */
+    AdminUser selectAbyName(String name);
 }

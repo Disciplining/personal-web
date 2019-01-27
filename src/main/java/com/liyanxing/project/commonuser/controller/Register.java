@@ -9,6 +9,7 @@ import com.liyanxing.project.commonuser.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,13 +17,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.beans.Transient;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * 处理用户的注册
  */
-@Controller
+@Controller("commonUserRegister")
 @RequestMapping("/commonuser")
 public class Register
 {
@@ -37,6 +39,7 @@ public class Register
      * @return
      */
     @PostMapping("/register")
+    @Transactional
     public String register(CommonUserParame commonUserParame, BindingResult bindingResult, Model model)
     {
         CommonUser commonUser = new CommonUser();

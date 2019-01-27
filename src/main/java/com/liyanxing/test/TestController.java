@@ -1,5 +1,6 @@
 package com.liyanxing.test;
 
+import com.liyanxing.project.adminuser.service.AdminUserService;
 import com.liyanxing.project.commonuser.pojo.CommonUser;
 import com.liyanxing.project.commonuser.service.CommonUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,21 +17,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class TestController
 {
     @Autowired
-    @Qualifier("commonUserServiceImpl")
-    private CommonUserService service;
+    @Qualifier("adminUserServiceImpl")
+    private AdminUserService service;
 
     @GetMapping("/test")
-    public String test(Model model)
-    {
-//        model.addAttribute("msg","此用户名已被注册!");
-
-        return "login";
-    }
-
-    @GetMapping("/getRe")
     @ResponseBody
-    public CommonUser getRe()
+    public String test()
     {
-        return service.selectAbyName("李艳兴");
+        return service.selectAbyName("管理员1").toString();
     }
 }

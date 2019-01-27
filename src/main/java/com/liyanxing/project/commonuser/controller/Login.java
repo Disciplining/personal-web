@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * 处理用户登录
  */
-@Controller
+@Controller("commonUserLogin")
 @RequestMapping("/commonuser")
 public class Login
 {

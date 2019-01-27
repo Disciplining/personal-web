@@ -23,13 +23,11 @@ public class CommonController
             CommonUser commonUser = (CommonUser) subject.getPrincipal();
 
             model.addAttribute("user_name",commonUser.getName());
-
         }
         catch (NullPointerException e)
         {
             //空指针异常，没有用户登录
         }
-
 
         return "index";
     }

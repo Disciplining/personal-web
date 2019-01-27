@@ -25,4 +25,16 @@ public class AdminUserServiceImpl implements AdminUserService
     {
         return mapper.selectAllAdminUser();
     }
+
+    /**
+     * 根据名称查询一个管理员
+     *
+     * @param name
+     * @return
+     */
+    @Override
+    public AdminUser selectAbyName(String name)
+    {
+        return mapper.selectAbyName(name);
+    }
 }
