@@ -1,13 +1,15 @@
 package com.liyanxing.shiro;
 
-import com.liyanxing.project.adminuser.pojo.AdminUser;
-import com.liyanxing.project.adminuser.service.AdminUserService;
-import com.liyanxing.project.commonuser.pojo.CommonUser;
-import com.liyanxing.project.commonuser.service.CommonUserService;
+import com.liyanxing.tables.adminuser.pojo.AdminUser;
+import com.liyanxing.tables.adminuser.service.AdminUserService;
+import com.liyanxing.tables.commonuser.pojo.CommonUser;
+import com.liyanxing.tables.commonuser.service.CommonUserService;
 import com.liyanxing.shiro.token.AdminUserToken;
 import com.liyanxing.shiro.token.CommonUserToken;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +33,19 @@ public class MyRealm extends AuthorizingRealm
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection)
     {
-        System.out.println("执行授权逻辑");
-        return null;
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+
+        Object currentUser = SecurityUtils.getSubject().getPrincipal(); //获得当前用户
+        if (currentUser instanceof CommonUser)
+        {
+            info.addRole(Roles.COMMON_USER);
+        }
+        else if (currentUser instanceof AdminUser)
+        {
+            info.addRole(Roles.ADMINISTRATOR);
+        }
+
+        return info;
     }
 
     /**
