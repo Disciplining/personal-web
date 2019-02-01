@@ -9,4 +9,11 @@ public interface SoftwareRecommendService
      * @param software
      */
     void insertAsoftware(SoftwareRecommend software);
+
+    /**
+     * 通过id查询一个软件
+     * @param id
+     * @return
+     */
+    SoftwareRecommend selectAbyId(int id);
 }

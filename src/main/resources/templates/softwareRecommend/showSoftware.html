@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 适配手机 -->
+
+        <title>软件推荐</title>
+    </head>
+
+    <body>
+        <img th:src="@{'/images/' + ${pic}}"/> <br/>
+        <div th:text="${int}"></div>
+    </body>
+</html>

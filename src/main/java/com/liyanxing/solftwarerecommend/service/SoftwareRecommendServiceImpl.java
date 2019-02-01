@@ -22,4 +22,16 @@ public class SoftwareRecommendServiceImpl implements SoftwareRecommendService
     {
         mapper.insertAsoftware(software);
     }
+
+    /**
+     * 通过id查询一个软件
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public SoftwareRecommend selectAbyId(int id)
+    {
+        return mapper.selectAbyId(id);
+    }
 }

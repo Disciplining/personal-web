@@ -3,6 +3,7 @@ package com.liyanxing.solftwarerecommend.mapper;
 import com.liyanxing.solftwarerecommend.pojo.SoftwareRecommend;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 @Mapper
@@ -15,4 +16,12 @@ public interface SoftwareRecommendMapper
      */
     @Insert("insert into software_recommend (`pic`,`name`,`introduction`,`official_web`) values (#{pic},#{name},#{introduction},#{officialWeb})")
     void insertAsoftware(SoftwareRecommend software);
+
+    /**
+     * 通过id查询一个软件
+     * @param id
+     * @return
+     */
+    @Select("select * from software_recommend where id=#{id}")
+    SoftwareRecommend selectAbyId(int id);
 }
