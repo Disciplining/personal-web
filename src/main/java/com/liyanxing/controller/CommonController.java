@@ -1,6 +1,6 @@
 package com.liyanxing.controller;
 
-import com.liyanxing.tables.commonuser.pojo.CommonUser;
+import com.liyanxing.users.commonuser.pojo.CommonUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;

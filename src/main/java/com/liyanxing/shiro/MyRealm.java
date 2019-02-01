@@ -1,9 +1,9 @@
 package com.liyanxing.shiro;
 
-import com.liyanxing.tables.adminuser.pojo.AdminUser;
-import com.liyanxing.tables.adminuser.service.AdminUserService;
-import com.liyanxing.tables.commonuser.pojo.CommonUser;
-import com.liyanxing.tables.commonuser.service.CommonUserService;
+import com.liyanxing.users.adminuser.pojo.AdminUser;
+import com.liyanxing.users.adminuser.service.AdminUserService;
+import com.liyanxing.users.commonuser.pojo.CommonUser;
+import com.liyanxing.users.commonuser.service.CommonUserService;
 import com.liyanxing.shiro.token.AdminUserToken;
 import com.liyanxing.shiro.token.CommonUserToken;
 import org.apache.shiro.SecurityUtils;
