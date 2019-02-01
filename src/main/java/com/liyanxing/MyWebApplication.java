@@ -5,7 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.liyanxing.users.*.mapper")
+//@MapperScan({"com.liyanxing.users.*.mapper", "com.liyanxing.solftwarerecommend.mapper"})
+@MapperScan("com.liyanxing.**.mapper")
 public class MyWebApplication
 {
     public static void main(String[] args)
