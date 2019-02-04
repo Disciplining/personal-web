@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 适配手机 -->
 
-        <title>添加一个软件</title>
+        <title>修改软件信息</title>
 
         <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script> <!-- jquery -->
 
@@ -23,44 +24,39 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.9/themes/fa/theme.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.9/js/locales/(lang).js"></script>
 
-        <script src="/js/addAsoftware.js"></script>
+        <script src="/js/modAsoftware.js"></script>
     </head>
 
     <body>
         <div id="main-form" class="col-md-4 col-md-offset-4">
-            <form id="form" action="/addAsoftware" method="post" class="form-horizontal" enctype="multipart/form-data">
+            <form id="form" action="/modifySoftware" method="post" class="form-horizontal" enctype="multipart/form-data">
 
-                <div class="form-group">
-                    <label class="col-md-2 control-label small"><span class="text-danger">*</span>软件图标：</label>
-                    <div class="col-md-10 has-success">
-                        <input id="pic" name="pic" type="file" class="form-control"/>
-                    </div>
-                </div>
+                <input name="id" type="number" th:field="${software.id}" style="display: none"/>
 
                 <div class="form-group">
                     <label class="col-md-2 control-label small"><span class="text-danger">*</span>软件名称：</label>
                     <div class="col-md-10 has-success">
-                        <input name="name" type="text" class="form-control" placeholder="最多16个字符"/>
+                        <input name="name" type="text" class="form-control" th:field="${software.name}"/>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-md-2 control-label small"><span class="text-danger">*</span>软件介绍：</label>
                     <div class="col-md-10 has-success">
-                        <textarea name="introduction" type="password" class="form-control" placeholder="最多256个字符"></textarea>
+                        <textarea name="introduction" type="password" class="form-control" th:field="${software.introduction}"></textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-md-2 control-label small"><span class="text-danger">*</span>官方网站：</label>
                     <div class="col-md-10 has-success">
-                        <input name="officialWeb" type="text" class="form-control"/>
+                        <input name="officialWeb" type="text" class="form-control" th:field="${software.officialWeb}"/>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-md-10 col-md-offset-2">
-                        <button id="submitData" type="submit" class="btn btn-primary">提交</button>
+                        <button id="submitData" type="submit" class="btn btn-primary">修改</button>
                         <button type="reset" class="btn btn-danger">重置</button>
                     </div>
                 </div>

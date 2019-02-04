@@ -65,4 +65,26 @@ public class SoftwareRecommendServiceImpl implements SoftwareRecommendService
 
         return softwarePageBean;
     }
+
+    /**
+     * 根据id删除一个软件
+     *
+     * @param id
+     */
+    @Override
+    public void deleteAbyId(int id)
+    {
+        mapper.deleteAbyId(id);
+    }
+
+    /**
+     * 修改一个软件的信息
+     *
+     * @param software
+     */
+    @Override
+    public void modifySoftware(SoftwareRecommend software)
+    {
+        mapper.modifySoftware(software);
+    }
 }

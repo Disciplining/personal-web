@@ -24,4 +24,16 @@ public interface SoftwareRecommendService
      * @return
      */
     PageBean<SoftwareRecommend> selectApageData(int currPage);
+
+    /**
+     * 根据id删除一个软件
+     * @param id
+     */
+    void deleteAbyId(int id);
+
+    /**
+     * 修改一个软件的信息
+     * @param software
+     */
+    void modifySoftware(SoftwareRecommend software);
 }

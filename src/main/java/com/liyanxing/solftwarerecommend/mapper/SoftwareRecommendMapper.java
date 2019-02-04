@@ -1,9 +1,7 @@
 package com.liyanxing.solftwarerecommend.mapper;
 
 import com.liyanxing.solftwarerecommend.pojo.SoftwareRecommend;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -29,6 +27,13 @@ public interface SoftwareRecommendMapper
     SoftwareRecommend selectAbyId(int id);
 
     /**
+     * 根据id删除一个软件
+     * @param id
+     */
+    @Delete("delete from `software_recommend` where id=#{id}")
+    void deleteAbyId(int id);
+
+    /**
      * 查询软件的个数
      * @return
      */
@@ -42,4 +47,11 @@ public interface SoftwareRecommendMapper
      */
     @Select("select * from `software_recommend` limit #{begin},#{num}")
     List<SoftwareRecommend> selectPage(Map map);
+
+    /**
+     * 修改一个软件的信息
+     * @param software
+     */
+    @Update("update `software_recommend` set `name`=#{name}, `introduction`=#{introduction}, `official_web`=#{officialWeb} where `id`=#{id}")
+    void modifySoftware(SoftwareRecommend software);
 }

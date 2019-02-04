@@ -74,17 +74,6 @@ function bootStrapVid()
 
             fields:
                 {
-                    pic:
-                        {
-
-                            validators:
-                                {
-                                    notEmpty:
-                                        {
-                                            message:'软件图标不能为空'
-                                        }
-                                }
-                        },
                     name:
                         {
 
