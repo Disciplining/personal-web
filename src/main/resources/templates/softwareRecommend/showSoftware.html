@@ -1,59 +1,80 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:shiro="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+                xmlns:shiro="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 适配手机 -->
 
         <title>软件推荐</title>
+
+        <!--bootstrap css文件 和 js文件-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <style>
+            th,td
+            {
+                vertical-align: middle!important;
+                text-align: center!important;
+            }
+            td img
+            {
+                margin: 0 auto !important;
+            }
+        </style>
+
     </head>
 
     <body>
-        <table border="2px">
-            <tr>
-                <th>软件</th>
-                <th>软件名称</th>
-                <th>软件介绍</th>
-                <th>官方网站</th>
-                <th shiro:hasRole="administrator">操作</th>
-            </tr>
-            <tr th:each="foo : ${data}">
-                <th>
-                    <img th:src="@{ '/images/' + ${foo.pic} }"/>
-                </th>
-                <th th:text="${foo.name}"></th>
-                <th th:text="${foo.introduction}"></th>
-                <th>
-                    <a th:href="@{ ${foo.officialWeb} }" th:text="${foo.officialWeb}" target="view_window"></a>
-                </th>
-                <th shiro:hasRole="administrator">
-                    <a href="#">修改</a>
-                    <a href="#">删除</a>
-                </th>
-            </tr>
-        </table>
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <tr class="success">
+                        <th>软件</th>
+                        <th>软件名称</th>
+                        <th>软件介绍</th>
+                        <th>官方网站</th>
+                        <th>操作</th>
+                        <!--<th shiro:hasRole="administrator">操作</th>-->
+                    </tr>
 
-        <br/>
+                    <tr th:each="foo : ${data}">
+                        <td>
+                            <img th:src="@{ '/images/' + ${foo.pic} }" class="img-rounded img-responsive"/>
+                        </td>
+                        <td th:text="${foo.name}"></td>
+                        <td th:text="${foo.introduction}"></td>
+                        <td>
+                            <a th:href="@{ ${foo.officialWeb} }" th:text="${foo.officialWeb}" target="view_window"></a>
+                        </td>
+                        <td> <!--shiro:hasRole="administrator">-->
+                            <a href="#" class="btn btn-success">修改</a>
+                            <a href="#" class="btn btn-danger">删除</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
 
-        <a th:href="@{ /toShowSoftware(currPage=1) }">首页</a>
-        <a th:href="@{/toShowSoftware(currPage=${currPage}-1)}">上一页</a> <!--这两个currPage要分清，第一个是要传给后端的，也就是上一页的页数，第二个是后端传过来的，也就是这一页的页灵长-->
+            <br/>
 
-        <span th:each="i : ${ #numbers.sequence(1,totalPage) }">
+            <a th:href="@{ /toShowSoftware(currPage=1) }">首页</a>
+            <a th:href="@{/toShowSoftware(currPage=${currPage}-1)}">上一页</a> <!--这两个currPage要分清，第一个是要传给后端的，也就是上一页的页数，第二个是后端传过来的，也就是这一页的页灵长-->
+
+            <span th:each="i : ${ #numbers.sequence(1,totalPage) }">
                 <a th:text="${i}" th:href="@{ /toShowSoftware(currPage=${i}) }"></a>
             </span>
 
-        <a th:href="@{/toShowSoftware(currPage=${currPage}+1)}">下一页</a>
-        <a th:href="@{ /toShowSoftware(currPage=${totalPage}) }">尾页</a>
+            <a th:href="@{/toShowSoftware(currPage=${currPage}+1)}">下一页</a>
+            <a th:href="@{ /toShowSoftware(currPage=${totalPage}) }">尾页</a>
 
-        <div>
-            <form action="/toShowSoftware" method="get">
-                跳转到第
-                <input type="number" name="currPage" />
-                页
-                <input type="submit" value="跳转"/>
-            </form>
+            <div>
+                <form action="/toShowSoftware" method="get">
+                    跳转到第
+                    <input type="number" name="currPage" />
+                    页
+                    <input type="submit" value="跳转"/>
+                </form>
+            </div>
         </div>
-
     </body>
 </html>
