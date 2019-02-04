@@ -9,7 +9,45 @@
     </head>
 
     <body>
-        <img th:src="@{'/images/' + ${pic}}"/> <br/>
-        <div th:text="${int}"></div>
+        <table border="2px">
+            <tr>
+                <th>软件</th>
+                <th>软件名称</th>
+                <th>软件介绍</th>
+                <th>官方网站</th>
+            </tr>
+            <tr th:each="foo : ${data}">
+                <th>
+                    <img th:src="@{ '/images/' + ${foo.pic} }"/>
+                </th>
+                <th th:text="${foo.name}"></th>
+                <th th:text="${foo.introduction}"></th>
+                <th>
+                    <a th:href="@{ ${foo.officialWeb} }" th:text="${foo.officialWeb}" target="view_window"></a>
+                </th>
+            </tr>
+        </table>
+
+        <br/>
+
+        <a th:href="@{ /toShowSoftware(currPage=1) }">首页</a>
+        <a th:href="@{/toShowSoftware(currPage=${currPage}-1)}">上一页</a> <!--这两个currPage要分清，第一个是要传给后端的，也就是上一页的页数，第二个是后端传过来的，也就是这一页的页灵长-->
+
+        <span th:each="i : ${ #numbers.sequence(1,totalPage) }">
+                <a th:text="${i}" th:href="@{ /toShowSoftware(currPage=${i}) }"></a>
+            </span>
+
+        <a th:href="@{/toShowSoftware(currPage=${currPage}+1)}">下一页</a>
+        <a th:href="@{ /toShowSoftware(currPage=${totalPage}) }">尾页</a>
+
+        <div>
+            <form action="/toShowSoftware" method="get">
+                跳转到第
+                <input type="number" name="currPage" />
+                页
+                <input type="submit" value="跳转"/>
+            </form>
+        </div>
+
     </body>
 </html>

@@ -1,6 +1,9 @@
 package com.liyanxing.solftwarerecommend.service;
 
 import com.liyanxing.solftwarerecommend.pojo.SoftwareRecommend;
+import com.liyanxing.solftwarerecommend.util.PageBean;
+
+import java.util.List;
 
 public interface SoftwareRecommendService
 {
@@ -16,4 +19,11 @@ public interface SoftwareRecommendService
      * @return
      */
     SoftwareRecommend selectAbyId(int id);
+
+    /**
+     * 查询软件表中某一页的数据
+     * @param currPage 要查询第几页
+     * @return
+     */
+    PageBean<SoftwareRecommend> selectApageData(int currPage);
 }

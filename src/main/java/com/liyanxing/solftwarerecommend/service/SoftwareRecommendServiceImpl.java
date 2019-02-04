@@ -2,9 +2,14 @@ package com.liyanxing.solftwarerecommend.service;
 
 import com.liyanxing.solftwarerecommend.mapper.SoftwareRecommendMapper;
 import com.liyanxing.solftwarerecommend.pojo.SoftwareRecommend;
+import com.liyanxing.solftwarerecommend.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service("softwareRecommendServiceImpl")
 public class SoftwareRecommendServiceImpl implements SoftwareRecommendService
@@ -33,5 +38,30 @@ public class SoftwareRecommendServiceImpl implements SoftwareRecommendService
     public SoftwareRecommend selectAbyId(int id)
     {
         return mapper.selectAbyId(id);
+    }
+
+    /**
+     * 查询软件表中某一页的数据
+     *
+     * @param currPage 要查询第几页
+     * @return
+     */
+    @Override
+    public PageBean<SoftwareRecommend> selectApageData(int currPage)
+    {
+        //创建当前页的分页对象，计算四个参数
+        int pageSize = 2; //设置每一页显示的条数
+        PageBean<SoftwareRecommend> softwarePageBean = new PageBean(currPage, pageSize, mapper.selectCount());
+
+        /*-------------------向数据库中查询当前页的数据-------------------*/
+        Map<String, Integer> parameter = new HashMap<>(2);
+        parameter.put("begin", softwarePageBean.getCurrPage() * softwarePageBean.getPageSize() - softwarePageBean.getPageSize());
+        parameter.put("num", softwarePageBean.getPageSize());
+        List<SoftwareRecommend> data = mapper.selectPage(parameter);
+        /*-----------------------------------------------------------*/
+
+        softwarePageBean.setData(data);
+
+        return softwarePageBean;
     }
 }

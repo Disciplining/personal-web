@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("commonUserMapper")
 @Mapper
+@Repository("commonUserMapper")
 public interface CommonUserMapper
 {
     /**
