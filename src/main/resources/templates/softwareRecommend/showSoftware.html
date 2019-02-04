@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.w3.org/1999/xhtml">
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:shiro="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 适配手机 -->
@@ -15,6 +16,7 @@
                 <th>软件名称</th>
                 <th>软件介绍</th>
                 <th>官方网站</th>
+                <th shiro:hasRole="administrator">操作</th>
             </tr>
             <tr th:each="foo : ${data}">
                 <th>
@@ -24,6 +26,10 @@
                 <th th:text="${foo.introduction}"></th>
                 <th>
                     <a th:href="@{ ${foo.officialWeb} }" th:text="${foo.officialWeb}" target="view_window"></a>
+                </th>
+                <th shiro:hasRole="administrator">
+                    <a href="#">修改</a>
+                    <a href="#">删除</a>
                 </th>
             </tr>
         </table>

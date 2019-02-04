@@ -1,9 +1,7 @@
 package com.liyanxing.solftwarerecommend.service;
 
 import com.liyanxing.solftwarerecommend.pojo.SoftwareRecommend;
-import com.liyanxing.solftwarerecommend.util.PageBean;
-
-import java.util.List;
+import com.liyanxing.util.PageBean;
 
 public interface SoftwareRecommendService
 {

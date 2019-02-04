@@ -1,4 +1,4 @@
-package com.liyanxing.solftwarerecommend.util;
+package com.liyanxing.util;
 
 import java.util.List;
 

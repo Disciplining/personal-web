@@ -2,7 +2,8 @@ package com.liyanxing.solftwarerecommend.service;
 
 import com.liyanxing.solftwarerecommend.mapper.SoftwareRecommendMapper;
 import com.liyanxing.solftwarerecommend.pojo.SoftwareRecommend;
-import com.liyanxing.solftwarerecommend.util.PageBean;
+import com.liyanxing.util.PageBean;
+import com.liyanxing.util.PageSize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -50,7 +51,7 @@ public class SoftwareRecommendServiceImpl implements SoftwareRecommendService
     public PageBean<SoftwareRecommend> selectApageData(int currPage)
     {
         //创建当前页的分页对象，计算四个参数
-        int pageSize = 2; //设置每一页显示的条数
+        int pageSize = PageSize.SOFTWARE_RECOMMEND; //设置每一页显示的条数
         PageBean<SoftwareRecommend> softwarePageBean = new PageBean(currPage, pageSize, mapper.selectCount());
 
         /*-------------------向数据库中查询当前页的数据-------------------*/

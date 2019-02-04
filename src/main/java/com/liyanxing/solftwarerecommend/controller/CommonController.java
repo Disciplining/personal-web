@@ -2,14 +2,13 @@ package com.liyanxing.solftwarerecommend.controller;
 
 import com.liyanxing.solftwarerecommend.pojo.SoftwareRecommend;
 import com.liyanxing.solftwarerecommend.service.SoftwareRecommendService;
-import com.liyanxing.solftwarerecommend.util.PageBean;
+import com.liyanxing.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller("solftwareRecommendCommonController")
 public class CommonController
