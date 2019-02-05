@@ -39,6 +39,8 @@ public class SoftsareAddDelMod
     @Qualifier("softwareRecommendServiceImpl")
     private SoftwareRecommendService service;
 
+    /*----------------------------------------------------------------------------*/
+
     /**
      * 添加一个软件
      * 接收表单数据，处理后存入数据库

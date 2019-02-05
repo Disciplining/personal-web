@@ -18,6 +18,8 @@ public class CommonController
     @Qualifier("softwareRecommendServiceImpl")
     private SoftwareRecommendService service;
 
+    /*--------------------------------------------------------------*/
+
     /**
      * 转到软件添加页面
      * @return
