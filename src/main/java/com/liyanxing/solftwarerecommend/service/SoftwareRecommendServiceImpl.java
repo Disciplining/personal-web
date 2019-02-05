@@ -1,13 +1,18 @@
 package com.liyanxing.solftwarerecommend.service;
 
+
 import com.liyanxing.solftwarerecommend.mapper.SoftwareRecommendMapper;
 import com.liyanxing.solftwarerecommend.pojo.SoftwareRecommend;
 import com.liyanxing.util.PageBean;
 import com.liyanxing.util.PageSize;
+import com.liyanxing.util.SavePicture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,17 +20,36 @@ import java.util.Map;
 @Service("softwareRecommendServiceImpl")
 public class SoftwareRecommendServiceImpl implements SoftwareRecommendService
 {
+    /**
+     *存储用户上传图片的总目录
+     */
+    @Value("${cbs.imagesPath}")
+    private  String mainPicturePath;
+
+    /**
+     * 软件推荐的图片应该存入的子目录
+     */
+    private String softwareRecommendDir = "softwareRecommend/";
+
     @Autowired
     @Qualifier("softwareRecommendMapper")
     private SoftwareRecommendMapper mapper;
 
     /**
      * 插入一个软件
-     * @param software
+     * @param software 对象，存入数据库
+     * @param pic 图片数据，存入磁盘
      */
     @Override
-    public void insertAsoftware(SoftwareRecommend software)
+    public void insertAsoftware(SoftwareRecommend software, MultipartFile pic)
     {
+        //存入磁盘
+        mainPicturePath = mainPicturePath.substring(mainPicturePath.indexOf(':')+1); // 存储用户上传图片的总目录路径，最后有个“/”.
+        String childDirPath = mainPicturePath + softwareRecommendDir; //软件推荐的图片应该存入的子目录路径,最后有个“/”.
+        String picName = SavePicture.save(pic, childDirPath);
+
+        //存入数据库
+        software.setPic(softwareRecommendDir + picName); //只将不包括总目录的部分存入数据库，这样，取出来返回给前端即可用，不需要再处理。
         mapper.insertAsoftware(software);
     }
 
@@ -74,7 +98,17 @@ public class SoftwareRecommendServiceImpl implements SoftwareRecommendService
     @Override
     public void deleteAbyId(int id)
     {
-        mapper.deleteAbyId(id);
+        //获得图片文件
+        SoftwareRecommend software = mapper.selectAbyId(id);
+        mainPicturePath = mainPicturePath.substring(mainPicturePath.indexOf(':')+1); // 存储用户上传图片的总目录路径，最后有个“/”.
+        File picture = new File(mainPicturePath + software.getPic());
+
+        if (picture.exists())
+        {
+            picture.delete(); //从磁盘中删除图片文件
+        }
+
+        mapper.deleteAbyId(id); //从数据库中删除
     }
 
     /**

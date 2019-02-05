@@ -1,5 +1,6 @@
 package com.liyanxing.controller;
 
+import com.liyanxing.users.adminuser.pojo.AdminUser;
 import com.liyanxing.users.commonuser.pojo.CommonUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -20,9 +21,18 @@ public class CommonController
         try
         {
             Subject subject = SecurityUtils.getSubject();
-            CommonUser commonUser = (CommonUser) subject.getPrincipal();
+            Object user = subject.getPrincipal();
 
-            model.addAttribute("user_name",commonUser.getName());
+            if (user instanceof CommonUser)
+            {
+                CommonUser loginUser = (CommonUser) user;
+                model.addAttribute("user_name",loginUser.getName());
+            }
+            else if (user instanceof AdminUser)
+            {
+                AdminUser loginUser = (AdminUser) user;
+                model.addAttribute("user_name",loginUser.getName());
+            }
         }
         catch (NullPointerException e)
         {

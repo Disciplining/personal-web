@@ -12,6 +12,10 @@ public class WebAppConfig implements WebMvcConfigurer
     @Value("${cbs.imagesPath}")
     private String mImagesPath;
 
+    /**
+     * 配置图片
+     * @param registry
+     */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry)
     {
