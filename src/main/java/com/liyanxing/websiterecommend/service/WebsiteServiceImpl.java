@@ -77,7 +77,7 @@ public class WebsiteServiceImpl implements WebsiteService
     public PageBean<Website> selectApageData(int currPage)
     {
         //创建当前页的分页对象，计算四个参数
-        int pageSize = PageSize.WEBSITE; //设置每一页显示的条数
+        int pageSize = PageSize.WEBSITE_RECOMMEND; //设置每一页显示的条数
         PageBean<Website> websitePageBean = new PageBean(currPage, pageSize, mapper.selectCount());
 
         /*-------------------向数据库中查询当前页的数据-------------------*/

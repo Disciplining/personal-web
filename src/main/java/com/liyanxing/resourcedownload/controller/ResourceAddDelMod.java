@@ -1,11 +1,14 @@
 package com.liyanxing.resourcedownload.controller;
 
+
 import com.liyanxing.resourcedownload.pojo.Resource;
 import com.liyanxing.resourcedownload.service.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -31,7 +34,6 @@ public class ResourceAddDelMod
      * @return
      */
     @PostMapping("/addAresource")
-    @ResponseBody
     public String addAsoftware(MultipartFile pic, String name, String introduction, MultipartFile file)
     {
         Resource resource = new Resource();
@@ -40,6 +42,40 @@ public class ResourceAddDelMod
 
         service.insertAresource(resource, pic, file);
 
-        return "ok";
+        return "redirect:/toShowResourcePage?currPage=1";
+    }
+
+    /**
+     * 删除一个资源
+     * @param id 要删除的资源的id
+     * @return
+     */
+    @GetMapping("/deleteResource")
+    public String deleteSoftWare(@RequestParam(name = "id") int id)
+    {
+//        System.out.println("测试：" + id);
+        service.deleteAbyId(id);
+
+        return "redirect:/toShowResourcePage?currPage=1";
+    }
+
+    /**
+     * 修改一个资源
+     * @param id
+     * @param name
+     * @param introduction
+     * @return
+     */
+    @PostMapping("/modifyResource")
+    public String modifyResource(int id, String name, String introduction)
+    {
+        Resource resource = new Resource();
+        resource.setId(id);
+        resource.setName(name);
+        resource.setIntroduction(introduction);
+
+        service.modifyResource(resource);
+
+        return "redirect:/toShowResourcePage?currPage=1";
     }
 }

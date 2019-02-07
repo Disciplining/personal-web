@@ -28,7 +28,7 @@ function bootStrapVid()
                                 {
                                     notEmpty:
                                         {
-                                            message:'软件名不能为空'
+                                            message:'资源名不能为空'
                                         },
                                     stringLength:
                                         {
@@ -44,23 +44,12 @@ function bootStrapVid()
                                 {
                                     notEmpty:
                                         {
-                                            message:'软件介绍不能为空'
+                                            message:'资源介绍不能为空'
                                         },
                                     stringLength:
                                         {
                                             max : 256,
                                             message : '最多256个字符'
-                                        }
-                                }
-                        },
-                    officialWeb:
-                        {
-
-                            validators:
-                                {
-                                    notEmpty:
-                                        {
-                                            message:'官方网站不能为空'
                                         }
                                 }
                         }

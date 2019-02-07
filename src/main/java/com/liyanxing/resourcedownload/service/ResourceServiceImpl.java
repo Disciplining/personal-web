@@ -1,14 +1,20 @@
 package com.liyanxing.resourcedownload.service;
 
+import com.liyanxing.config.DirectoryPath;
 import com.liyanxing.resourcedownload.mapper.ResourceMapper;
 import com.liyanxing.resourcedownload.pojo.Resource;
-import com.liyanxing.config.DirectoryPath;
 import com.liyanxing.util.SplitPage.PageBean;
+import com.liyanxing.util.SplitPage.PageSize;
 import com.liyanxing.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service("resourceServiceImpl")
 public class ResourceServiceImpl implements ResourceService
@@ -49,7 +55,7 @@ public class ResourceServiceImpl implements ResourceService
     @Override
     public Resource selectAbyId(int id)
     {
-        return null;
+        return mapper.selectAbyId(id);
     }
 
     /**
@@ -61,7 +67,18 @@ public class ResourceServiceImpl implements ResourceService
     @Override
     public PageBean<Resource> selectApageData(int currPage)
     {
-        return null;
+        //创建当前页的分页对象，计算四个参数
+        int pageSize = PageSize.RESOURCE_DONELOAD; //设置每一页显示的条数
+        PageBean<Resource> resourcePageBean = new PageBean(currPage, pageSize, mapper.selectCount());
+
+        Map<String, Integer> parameter = new HashMap<>(2);
+        parameter.put("begin", resourcePageBean.getCurrPage() * resourcePageBean.getPageSize() - resourcePageBean.getPageSize());
+        parameter.put("num", resourcePageBean.getPageSize());
+        List<Resource> data = mapper.selectPage(parameter);
+
+        resourcePageBean.setData(data);
+
+        return resourcePageBean;
     }
 
     /**
@@ -72,7 +89,21 @@ public class ResourceServiceImpl implements ResourceService
     @Override
     public void deleteAbyId(int id)
     {
+        Resource resource = mapper.selectAbyId(id);
 
+        File pic = new File(DirectoryPath.MAIN_PICTURE_PICTURE + resource.getPic());
+        File file = new File("" + resource.getPath());
+
+        if (pic.exists())
+        {
+            pic.delete();
+        }
+        if (file.exists())
+        {
+            file.delete();
+        }
+
+        mapper.deleteAbyId(id);
     }
 
     /**
@@ -81,8 +112,8 @@ public class ResourceServiceImpl implements ResourceService
      * @param resource
      */
     @Override
-    public void modifySoftware(Resource resource)
+    public void modifyResource(Resource resource)
     {
-
+        mapper.modifyResource(resource);
     }
 }

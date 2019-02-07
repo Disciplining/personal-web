@@ -59,7 +59,7 @@ public class SoftsareAddDelMod
 
     /**
      * 修改一个软件
-     * @param pic
+     * @param id
      * @param name
      * @param introduction
      * @param officialWeb

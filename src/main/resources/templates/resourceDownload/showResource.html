@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+                xmlns:shiro="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 适配手机 -->
+
+        <title>资源下载</title>
+
+        <!--bootstrap css文件 和 js文件-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <style>
+            th,td
+            {
+                vertical-align: middle!important;
+                text-align: center!important;
+            }
+            td img
+            {
+                margin: 0 auto !important;
+            }
+        </style>
+
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <tr class="info">
+                        <th>资源</th>
+                        <th>资源名称</th>
+                        <th>资源介绍</th>
+                        <th>操作</th>
+                        <!--<th shiro:hasRole="administrator">操作</th>-->
+                    </tr>
+
+                    <tr th:each="foo : ${data}">
+                        <td>
+                            <img th:src="@{ '/images/' + ${foo.pic} }" class="img-rounded img-responsive"/>
+                        </td>
+                        <td th:text="${foo.name}"></td>
+                        <td th:text="${foo.introduction}"></td>
+                        <td>
+                            <a th:href="@{ /toModResourcePage(id=${foo.id}) }" class="btn btn-success">修改</a>
+                            <a th:href="@{ /deleteResource(id=${foo.id}) }" class="btn btn-danger">删除</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2 pull-left">
+                    <a class="btn btn-sm btn-success" href="/toAddResourcePage" >添加一个资源</a>
+                </div>
+                <div class="col-md-10 pull-right">
+                    <div class="pull-right">
+                        <a th:href="@{ /toShowResourcePage(currPage=1) }" class="btn btn-sm btn-default">首页</a>
+                        <a th:href="@{/toShowResourcePage(currPage=${currPage}-1)}" class="btn btn-sm btn-default">上一页</a> <!--这两个currPage要分清，第一个是要传给后端的，也就是上一页的页数，第二个是后端传过来的，也就是这一页的页灵长-->
+
+                        <span th:each="i : ${ #numbers.sequence(1,totalPage) }">
+                            <a th:text="${i}" th:href="@{ /toShowResourcePage(currPage=${i}) }" class="btn btn-sm btn-default"></a>
+                        </span>
+
+                        <a th:href="@{/toShowResourcePage(currPage=${currPage}+1)}" class="btn btn-sm btn-default">下一页</a>
+                        <a th:href="@{ /toShowResourcePage(currPage=${totalPage}) }" class="btn btn-sm btn-default">尾页</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 pull-right">
+                    <form action="/toShowResourcePage" method="get" class="form-inline">
+                        <input class="btn btn-sm btn-default pull-right" type="submit" value="确定"/>
+                        <div class="input-group col-md-6 pull-right">
+                            <div class="input-group-addon small">跳转到第</div>
+                            <input type="number" name="currPage" class="form-control input-sm"/>
+                            <div class="input-group-addon small">页</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </body>
+</html>

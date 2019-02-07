@@ -37,5 +37,5 @@ public interface ResourceService
      * 修改一个资源的信息
      * @param software
      */
-    void modifySoftware(Resource resource);
+    void modifyResource(Resource resource);
 }
