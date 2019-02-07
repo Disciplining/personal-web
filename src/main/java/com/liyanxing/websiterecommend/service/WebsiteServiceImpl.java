@@ -1,6 +1,6 @@
 package com.liyanxing.websiterecommend.service;
 
-import com.liyanxing.util.DirectoryPath;
+import com.liyanxing.config.DirectoryPath;
 import com.liyanxing.util.SplitPage.PageBean;
 import com.liyanxing.util.SplitPage.PageSize;
 import com.liyanxing.util.Util;
@@ -8,7 +8,6 @@ import com.liyanxing.websiterecommend.mapper.WebsiteMapper;
 import com.liyanxing.websiterecommend.pojo.Website;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;

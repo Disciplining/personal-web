@@ -1,9 +1,7 @@
-package com.liyanxing.util;
+package com.liyanxing.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
-import java.util.Map;
 
 @Component
 public class DirectoryPath
@@ -63,6 +61,6 @@ public class DirectoryPath
 
         SOFTWARE_RECOMMEND_DIR = MAIN_PICTURE_PICTURE + SOFTWARE_RECOMMEND_CHIL; //设置软件推荐图片应该存入的最终目录
         WEBSITE_RECOMMEND_DIR = MAIN_PICTURE_PICTURE + WEBSITE_RECOMMEND_CHIL; //设置网站推荐图片应该存入的最终目录
-        RESOURCE_DOWNLOAD_DIR = MAIN_PICTURE_PICTURE + RESOURCE_DOWNLOAD_CHIL;
+        RESOURCE_DOWNLOAD_DIR = MAIN_PICTURE_PICTURE + RESOURCE_DOWNLOAD_CHIL; //设置软件图片 的 最终目录
     }
 }

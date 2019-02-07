@@ -2,17 +2,13 @@ package com.liyanxing.resourcedownload.service;
 
 import com.liyanxing.resourcedownload.mapper.ResourceMapper;
 import com.liyanxing.resourcedownload.pojo.Resource;
-import com.liyanxing.util.DirectoryPath;
+import com.liyanxing.config.DirectoryPath;
 import com.liyanxing.util.SplitPage.PageBean;
 import com.liyanxing.util.Util;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.File;
-import java.io.IOException;
 
 @Service("resourceServiceImpl")
 public class ResourceServiceImpl implements ResourceService

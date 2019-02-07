@@ -3,13 +3,12 @@ package com.liyanxing.solftwarerecommend.service;
 
 import com.liyanxing.solftwarerecommend.mapper.SoftwareRecommendMapper;
 import com.liyanxing.solftwarerecommend.pojo.SoftwareRecommend;
-import com.liyanxing.util.DirectoryPath;
+import com.liyanxing.config.DirectoryPath;
 import com.liyanxing.util.SplitPage.PageBean;
 import com.liyanxing.util.SplitPage.PageSize;
 import com.liyanxing.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
