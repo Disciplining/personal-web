@@ -17,4 +17,4 @@ mybatis:
 
 # 上传图片存储总目录
 cbs:
-  imagesPath: file:/media/root/MyDisk/material/事务/我的事务/项目-个人小网站/AllProject/mainPicture/
+  imagesPath: file:/media/root/MyDisk/material/事务/我的事务/项目-个人小网站/AllProject/upload/mainPicture/

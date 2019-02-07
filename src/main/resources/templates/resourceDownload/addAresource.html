@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 适配手机 -->
 
-        <title>添加一个资源</title>
+        <title>添加一个软件</title>
 
         <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script> <!-- jquery -->
 
@@ -23,38 +23,38 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.9/themes/fa/theme.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.9/js/locales/(lang).js"></script>
 
-        <script src="/js/addAsoftware.js"></script>
+        <script src="/js/addAresource.js"></script>
     </head>
 
     <body>
         <div id="main-form" class="col-md-4 col-md-offset-4">
-            <form id="form" action="/addAsoftware" method="post" class="form-horizontal" enctype="multipart/form-data">
+            <form id="form" action="/addAresource" method="post" class="form-horizontal" enctype="multipart/form-data">
 
                 <div class="form-group">
-                    <label class="col-md-2 control-label small"><span class="text-danger">*</span>软件图标：</label>
+                    <label class="col-md-2 control-label small"><span class="text-danger">*</span>资源图标：</label>
                     <div class="col-md-10 has-success">
                         <input id="pic" name="pic" type="file" class="form-control"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-2 control-label small"><span class="text-danger">*</span>软件名称：</label>
+                    <label class="col-md-2 control-label small"><span class="text-danger">*</span>资源名称：</label>
                     <div class="col-md-10 has-success">
                         <input name="name" type="text" class="form-control" placeholder="最多16个字符"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-2 control-label small"><span class="text-danger">*</span>软件介绍：</label>
+                    <label class="col-md-2 control-label small"><span class="text-danger">*</span>资源介绍：</label>
                     <div class="col-md-10 has-success">
-                        <textarea name="introduction" type="password" class="form-control" placeholder="最多256个字符"></textarea>
+                        <textarea name="introduction" class="form-control" placeholder="最多256个字符"></textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-2 control-label small"><span class="text-danger">*</span>官方网站：</label>
+                    <label class="col-md-2 control-label small"><span class="text-danger">*</span>资源：</label>
                     <div class="col-md-10 has-success">
-                        <input name="officialWeb" type="text" class="form-control"/>
+                        <input name="file" type="file" class="form-control"/>
                     </div>
                 </div>
 

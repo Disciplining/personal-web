@@ -1,7 +1,6 @@
 package com.liyanxing.websiterecommend.controller;
 
-import com.liyanxing.solftwarerecommend.pojo.SoftwareRecommend;
-import com.liyanxing.util.PageBean;
+import com.liyanxing.util.SplitPage.PageBean;
 import com.liyanxing.websiterecommend.pojo.Website;
 import com.liyanxing.websiterecommend.service.WebsiteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller("WebsiteRecommendCommonConmmonController")
 public class ConmmonController

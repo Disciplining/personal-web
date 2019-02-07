@@ -2,8 +2,7 @@ package com.liyanxing.solftwarerecommend.controller;
 
 import com.liyanxing.solftwarerecommend.pojo.SoftwareRecommend;
 import com.liyanxing.solftwarerecommend.service.SoftwareRecommendService;
-import com.liyanxing.util.PageBean;
-import com.sun.org.apache.xpath.internal.operations.Mod;
+import com.liyanxing.util.SplitPage.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;

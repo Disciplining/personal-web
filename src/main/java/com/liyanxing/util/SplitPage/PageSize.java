@@ -1,4 +1,4 @@
-package com.liyanxing.util;
+package com.liyanxing.util.SplitPage;
 
 //修改变量的值设置每页显示的条数
 public class PageSize

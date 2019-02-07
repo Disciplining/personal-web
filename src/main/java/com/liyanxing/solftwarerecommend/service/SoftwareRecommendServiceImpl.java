@@ -3,9 +3,10 @@ package com.liyanxing.solftwarerecommend.service;
 
 import com.liyanxing.solftwarerecommend.mapper.SoftwareRecommendMapper;
 import com.liyanxing.solftwarerecommend.pojo.SoftwareRecommend;
-import com.liyanxing.util.PageBean;
-import com.liyanxing.util.PageSize;
-import com.liyanxing.util.SavePicture;
+import com.liyanxing.util.DirectoryPath;
+import com.liyanxing.util.SplitPage.PageBean;
+import com.liyanxing.util.SplitPage.PageSize;
+import com.liyanxing.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,20 +21,11 @@ import java.util.Map;
 @Service("softwareRecommendServiceImpl")
 public class SoftwareRecommendServiceImpl implements SoftwareRecommendService
 {
-    /**
-     *存储用户上传图片的总目录
-     */
-    @Value("${cbs.imagesPath}")
-    private  String mainPicturePath;
-
-    /**
-     * 软件推荐的图片应该存入的子目录
-     */
-    private String softwareRecommendDir = "softwareRecommend/";
-
     @Autowired
     @Qualifier("softwareRecommendMapper")
     private SoftwareRecommendMapper mapper;
+
+    /*----------------------------------------------------------------*/
 
     /**
      * 插入一个软件
@@ -44,12 +36,10 @@ public class SoftwareRecommendServiceImpl implements SoftwareRecommendService
     public void insertAsoftware(SoftwareRecommend software, MultipartFile pic)
     {
         //存入磁盘
-        mainPicturePath = mainPicturePath.substring(mainPicturePath.indexOf(':')+1); // 存储用户上传图片的总目录路径，最后有个“/”.
-        String childDirPath = mainPicturePath + softwareRecommendDir; //软件推荐的图片应该存入的子目录路径,最后有个“/”.
-        String picName = SavePicture.save(pic, childDirPath);
+        String picName = Util.save(pic, DirectoryPath.SOFTWARE_RECOMMEND_DIR);
 
         //存入数据库
-        software.setPic(softwareRecommendDir + picName); //只将不包括总目录的部分存入数据库，这样，取出来返回给前端即可用，不需要再处理。
+        software.setPic(DirectoryPath.SOFTWARE_RECOMMEND_CHIL + picName); //只将不包括总目录的部分存入数据库，这样，取出来返回给前端即可用，不需要再处理。
         mapper.insertAsoftware(software);
     }
 
@@ -100,8 +90,7 @@ public class SoftwareRecommendServiceImpl implements SoftwareRecommendService
     {
         //获得图片文件
         SoftwareRecommend software = mapper.selectAbyId(id);
-        mainPicturePath = mainPicturePath.substring(mainPicturePath.indexOf(':')+1); // 存储用户上传图片的总目录路径，最后有个“/”.
-        File picture = new File(mainPicturePath + software.getPic());
+        File picture = new File(DirectoryPath.MAIN_PICTURE_PICTURE + software.getPic());
 
         if (picture.exists())
         {

@@ -81,7 +81,7 @@ function bootStrapVid()
                                 {
                                     notEmpty:
                                         {
-                                            message:'软件名不能为空'
+                                            message:'网站名不能为空'
                                         },
                                     stringLength:
                                         {
@@ -97,7 +97,7 @@ function bootStrapVid()
                                 {
                                     notEmpty:
                                         {
-                                            message:'软件介绍不能为空'
+                                            message:'网站介绍不能为空'
                                         },
                                     stringLength:
                                         {

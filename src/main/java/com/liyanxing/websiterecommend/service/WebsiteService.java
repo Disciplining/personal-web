@@ -1,7 +1,6 @@
 package com.liyanxing.websiterecommend.service;
 
-import com.liyanxing.solftwarerecommend.pojo.SoftwareRecommend;
-import com.liyanxing.util.PageBean;
+import com.liyanxing.util.SplitPage.PageBean;
 import com.liyanxing.websiterecommend.pojo.Website;
 import org.springframework.web.multipart.MultipartFile;
 

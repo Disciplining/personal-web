@@ -1,7 +1,7 @@
 package com.liyanxing.solftwarerecommend.service;
 
 import com.liyanxing.solftwarerecommend.pojo.SoftwareRecommend;
-import com.liyanxing.util.PageBean;
+import com.liyanxing.util.SplitPage.PageBean;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface SoftwareRecommendService
@@ -9,7 +9,7 @@ public interface SoftwareRecommendService
     /**
      * 插入一个软件
      * @param software
-     * @param pic 软片数据
+     * @param pic 图片数据
      */
     void insertAsoftware(SoftwareRecommend software, MultipartFile pic);
 

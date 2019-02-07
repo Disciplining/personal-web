@@ -81,7 +81,7 @@ function bootStrapVid()
                                 {
                                     notEmpty:
                                         {
-                                            message:'网站图标不能为空'
+                                            message:'资源图标不能为空'
                                         }
                                 }
                         },
@@ -92,7 +92,7 @@ function bootStrapVid()
                                 {
                                     notEmpty:
                                         {
-                                            message:'网站名不能为空'
+                                            message:'资源名不能为空'
                                         },
                                     stringLength:
                                         {
@@ -108,7 +108,7 @@ function bootStrapVid()
                                 {
                                     notEmpty:
                                         {
-                                            message:'网站介绍不能为空'
+                                            message:'资源介绍不能为空'
                                         },
                                     stringLength:
                                         {
@@ -117,14 +117,14 @@ function bootStrapVid()
                                         }
                                 }
                         },
-                    officialWeb:
+                    file:
                         {
 
                             validators:
                                 {
                                     notEmpty:
                                         {
-                                            message:'官方网站不能为空'
+                                            message:'资源不能为空'
                                         }
                                 }
                         }

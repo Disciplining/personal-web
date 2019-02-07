@@ -1,4 +1,4 @@
-package com.liyanxing.util;
+package com.liyanxing.util.SplitPage;
 
 import java.util.List;
 

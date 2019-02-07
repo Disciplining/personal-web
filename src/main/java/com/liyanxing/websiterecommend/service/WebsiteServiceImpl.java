@@ -1,8 +1,9 @@
 package com.liyanxing.websiterecommend.service;
 
-import com.liyanxing.util.PageBean;
-import com.liyanxing.util.PageSize;
-import com.liyanxing.util.SavePicture;
+import com.liyanxing.util.DirectoryPath;
+import com.liyanxing.util.SplitPage.PageBean;
+import com.liyanxing.util.SplitPage.PageSize;
+import com.liyanxing.util.Util;
 import com.liyanxing.websiterecommend.mapper.WebsiteMapper;
 import com.liyanxing.websiterecommend.pojo.Website;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,17 +22,6 @@ import java.util.Map;
 @Service("websiteServiceImpl")
 public class WebsiteServiceImpl implements WebsiteService
 {
-    /**
-     *存储用户上传图片的总目录
-     */
-    @Value("${cbs.imagesPath}")
-    private  String mainPicturePath;
-
-    /**
-     * 软件推荐的图片应该存入的子目录
-     */
-    private String websiteRecommendDir = "websiteRecommend/";
-
     @Autowired
     @Qualifier("websiteMapper")
     private WebsiteMapper mapper;
@@ -71,12 +61,10 @@ public class WebsiteServiceImpl implements WebsiteService
     public void insertAwebsite(Website website, MultipartFile pic)
     {
         //存入磁盘
-        mainPicturePath = mainPicturePath.substring(mainPicturePath.indexOf(':')+1); // 存储用户上传图片的总目录路径，最后有个“/”.
-        String childDirPath = mainPicturePath + websiteRecommendDir; //软件推荐的图片应该存入的子目录路径,最后有个“/”.
-        String picName = SavePicture.save(pic, childDirPath);
+        String picName = Util.save(pic, DirectoryPath.WEBSITE_RECOMMEND_DIR);
 
         //存入数据库
-        website.setPic(websiteRecommendDir + picName);
+        website.setPic(DirectoryPath.WEBSITE_RECOMMEND_CHIL + picName);
         mapper.insertAwebsite(website);
     }
 
@@ -114,8 +102,7 @@ public class WebsiteServiceImpl implements WebsiteService
     public void deleteById(int id)
     {
         Website website = mapper.selectAbyId(id);
-        mainPicturePath = mainPicturePath.substring(mainPicturePath.indexOf(':')+1); // 存储用户上传图片的总目录路径，最后有个“/”.
-        File picture = new File(mainPicturePath + website.getPic());
+        File picture = new File(DirectoryPath.MAIN_PICTURE_PICTURE + website.getPic());
 
         if (picture.exists())
         {
