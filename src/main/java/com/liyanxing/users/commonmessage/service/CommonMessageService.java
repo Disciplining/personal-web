@@ -11,4 +11,10 @@ public interface CommonMessageService
      * @return
      */
     List<CommonMessage> selectAllMessage();
+
+    /**
+     * 保存一个用户的留言
+     * @param message
+     */
+    public void saveOneUserMessage(String messageText);
 }

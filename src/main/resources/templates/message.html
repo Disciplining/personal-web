@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+    <head>
+        <title>给我留言</title>
+        <!-- Meta-Tags -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <meta name="keywords" content=""/>
+
+        <script>
+            addEventListener
+            (
+                "load",
+                function ()
+                {
+                    setTimeout(hideURLbar, 0);
+                },
+                false
+            );
+            function hideURLbar()
+            {
+                window.scrollTo(0, 1);
+            }
+        </script>
+
+        <link href="/css/page/message.css" rel='stylesheet' type='text/css'/>
+    </head>
+
+    <body>
+        <header>
+            <h1>给我留言</h1>
+        </header>
+
+        <div class="w3ls-contact"> <!-- form starts here -->
+            <form action="/saveOneUserMessage" method="post">
+                <div class="agile-field-txt">
+                    <label>在下方填写留言</label>
+                    <textarea name="messageText" placeholder="填写您的留言" required="required"></textarea>
+                </div>
+                <div class="w3ls-contact  w3l-sub">
+                    <input type="submit"
+                           value="提交">
+                </div>
+
+            </form>
+        </div> <!-- //form ends here -->
+
+        <div class="copy-wthree">
+            <p>李高飞 曲阜师范大学</p>
+        </div>
+    </body>
+
+</html>

@@ -6,7 +6,6 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -29,7 +28,7 @@ public class ShiroConfig
          */
         Map<String, String> map = new LinkedHashMap<>();
         map.put("/download*", "authc"); //用户登录后才可以下载资源
-        shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
+        map.put("/toMessagePage","roles[" + Roles.COMMON_USER + "]"); //普通用户才可以留言
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
 
         shiroFilterFactoryBean.setLoginUrl("/toLogin");
