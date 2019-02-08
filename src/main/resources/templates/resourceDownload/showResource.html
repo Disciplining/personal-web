@@ -46,8 +46,9 @@
                         <td th:text="${foo.name}"></td>
                         <td th:text="${foo.introduction}"></td>
                         <td>
-                            <a th:href="@{ /toModResourcePage(id=${foo.id}) }" class="btn btn-success">修改</a>
-                            <a th:href="@{ /deleteResource(id=${foo.id}) }" class="btn btn-danger">删除</a>
+                            <a th:href="@{ /download(id=${foo.id}) }" class="btn btn-success">下载</a>
+                            <a th:href="@{ /toModResourcePage(id=${foo.id}) }" class="btn btn-success" shiro:hasRole="administrator">修改</a>
+                            <a th:href="@{ /deleteResource(id=${foo.id}) }" class="btn btn-danger" shiro:hasRole="administrator">删除</a>
                         </td>
                     </tr>
                 </table>
@@ -55,7 +56,7 @@
 
             <div class="row">
                 <div class="col-md-2 pull-left">
-                    <a class="btn btn-sm btn-success" href="/toAddResourcePage" >添加一个资源</a>
+                    <a class="btn btn-sm btn-success" href="/toAddResourcePage" shiro:hasRole="administrator">添加一个资源</a>
                 </div>
                 <div class="col-md-10 pull-right">
                     <div class="pull-right">

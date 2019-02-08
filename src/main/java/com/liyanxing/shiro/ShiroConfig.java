@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 @Configuration
 public class ShiroConfig
 {
@@ -20,6 +23,16 @@ public class ShiroConfig
     {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(defaultWebSecurityManager); //关联安全管理器
+
+        /**
+         * 设置拦截URL
+         */
+        Map<String, String> map = new LinkedHashMap<>();
+        map.put("/download*", "authc"); //用户登录后才可以下载资源
+        shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
+        shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
+
+        shiroFilterFactoryBean.setLoginUrl("/toLogin");
 
         return  shiroFilterFactoryBean;
     }

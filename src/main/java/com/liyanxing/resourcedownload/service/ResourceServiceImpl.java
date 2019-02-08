@@ -11,7 +11,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -74,8 +75,8 @@ public class ResourceServiceImpl implements ResourceService
         Map<String, Integer> parameter = new HashMap<>(2);
         parameter.put("begin", resourcePageBean.getCurrPage() * resourcePageBean.getPageSize() - resourcePageBean.getPageSize());
         parameter.put("num", resourcePageBean.getPageSize());
-        List<Resource> data = mapper.selectPage(parameter);
 
+        List<Resource> data = mapper.selectPage(parameter);
         resourcePageBean.setData(data);
 
         return resourcePageBean;
@@ -115,5 +116,69 @@ public class ResourceServiceImpl implements ResourceService
     public void modifyResource(Resource resource)
     {
         mapper.modifyResource(resource);
+    }
+
+    /**
+     * 资源下载
+     *
+     * @param id
+     * @param response
+     * @return
+     */
+    @Override
+    public void resourceDownload(int id, HttpServletResponse response)
+    {
+        //构建文件
+        Resource resource = mapper.selectAbyId(id);
+        File file = new File("" + resource.getPath());
+
+
+        if (file.exists())
+        {
+            /*--------------------------------设置用户下载的文件名--------------------------------*/
+            StringBuffer nameBuffer = new StringBuffer(resource.getName()); //文件名
+            String format = Util.getFormar(file.getName()); //获得扩展名（如果有的话）
+            String fileName = nameBuffer.append(format).toString(); //最终名字带扩展名
+            /*-------------------------*/
+
+            try
+            {
+                response.setContentType("multipart/form-data;charset=UTF-8");
+                response.setHeader("Content-Disposition", "attachment;fileName=" + new String(fileName.getBytes("UTF-8"),"iso-8859-1"));
+            }
+            catch (UnsupportedEncodingException e)
+            {
+                //不支持编码;
+                response.setHeader("Content-Disposition", "attachment;fileName=" + fileName);
+            }
+
+            try
+            {
+                /*-------------------获得文件输入流-------------------*/
+                FileInputStream fileInputStream = new FileInputStream(file);
+                BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
+                /*--------------------------------------------------*/
+
+                OutputStream  servletOutputStream = response.getOutputStream(); //获得用户下载所用的输入流
+
+                /*-------------------从输入流中读取数据，写入输入流中-------------------*/
+                byte[] buffer = new byte[1024]; //用于存储数据的数组
+                int i = bufferedInputStream.read(buffer); //从输入流中读取一个数组大小的数据，并存入数组
+                while (i != -1)
+                {
+                    servletOutputStream.write(buffer); //数将这一数组的数据写到输出流中，准备读取下一组
+                    i = bufferedInputStream.read(buffer); //读取下一组的数据
+                }
+                /*----------------------------------------------------------------*/
+
+                /*-------------------关闭流对象-------------------*/
+                bufferedInputStream.close();
+                fileInputStream.close();
+                /*----------------------------------------------*/
+            }
+            catch (Exception e)
+            {
+            }
+        }
     }
 }

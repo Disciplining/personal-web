@@ -2,7 +2,6 @@ package com.liyanxing.resourcedownload.controller;
 
 import com.liyanxing.resourcedownload.pojo.Resource;
 import com.liyanxing.resourcedownload.service.ResourceService;
-import com.liyanxing.solftwarerecommend.pojo.SoftwareRecommend;
 import com.liyanxing.util.SplitPage.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,7 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletResponse;
 
 @Controller("resourceDownloadCommonController")
 public class CommonController
@@ -61,5 +61,16 @@ public class CommonController
         model.addAttribute("software", resource);
 
         return "resourceDownload/modAresource";
+    }
+
+    /**
+     * 资源下载
+     * @param id
+     * @param response
+     */
+    @GetMapping("/download")
+    public void download(@RequestParam(name = "id") int id, HttpServletResponse response)
+    {
+        service.resourceDownload(id, response);
     }
 }

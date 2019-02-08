@@ -8,6 +8,34 @@ import java.io.IOException;
 public class Util
 {
     /**
+     * 从文件名中获得文件的扩展名
+     * @param fileName 文件名
+     * @return
+     */
+    public static String getFormar(final String fileName)
+    {
+        String format;
+
+        if (fileName.indexOf('.') == -1) //文件名中没有“.” 没有扩展名
+        {
+            format ="";
+        }
+        else //文件名中有一个或多个"."
+        {
+            if (fileName.lastIndexOf('.') != 0) //只要最后一个点不是第一个字符,就有扩展名
+            {
+                format = fileName.substring(fileName.lastIndexOf('.')); //有扩展名
+            }
+            else //文件名第的最后一个 “.” 是第一个字符，没有扩展名
+            {
+                format = "";
+            }
+        }
+
+        return format;
+    }
+
+    /**
      * 将文件存入磁盘
      * @param file 文件数据
      * @param dirPath 要存入的目录
@@ -23,14 +51,10 @@ public class Util
 
         //构建文件对象，并随机命名
         String randomStr = new SecureRandomNumberGenerator().nextBytes().toHex(); //生成32位的随机字符串,作为图片的名字。
-        String picFormat = "";
-        if(file.getOriginalFilename().indexOf('.') != -1)
-        {
-            picFormat = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.')); //文件的格式，带着“.”;
-        }
-        File picture = new File(dirPath + randomStr + picFormat);
+        String format = getFormar(file.getOriginalFilename()); //文件的扩展名
+        File picture = new File(dirPath + randomStr + format);
 
-        System.out.println("格式：" + picFormat);
+        System.out.println("格式：" + format);
 
         try
         {
@@ -41,6 +65,6 @@ public class Util
             //上传失败
         }
 
-        return randomStr + picFormat;
+        return randomStr + format;
     }
 }

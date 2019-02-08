@@ -21,26 +21,36 @@ public class PageBean<T>
      */
     public PageBean(int currPagePara, int pageSizePara, int totalCountPara)
     {
-        currPage = currPagePara;
-        pageSize = pageSizePara;
         totalCount = totalCountPara;
 
-        if (totalCount % pageSize == 0)
+        if (totalCount == 0) //没有数据
         {
-            totalPage = totalCount / pageSize;
+            currPage = 1;
+            pageSize = pageSizePara;
+            totalPage = 0;
         }
         else
         {
-            totalPage = totalCount / pageSize + 1;
-        }
+            currPage = currPagePara;
+            pageSize = pageSizePara;
 
-        if (currPage <= 0)
-        {
-            currPage = 1;
-        }
-        if (currPage >= totalPage + 1)
-        {
-            currPage = totalPage;
+            if (totalCount % pageSize == 0)
+            {
+                totalPage = totalCount / pageSize;
+            }
+            else
+            {
+                totalPage = totalCount / pageSize + 1;
+            }
+
+            if (currPage <= 0)
+            {
+                currPage = 1;
+            }
+            if (currPage >= totalPage + 1)
+            {
+                currPage = totalPage;
+            }
         }
     }
 

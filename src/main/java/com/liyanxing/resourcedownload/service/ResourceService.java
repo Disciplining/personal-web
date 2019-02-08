@@ -2,7 +2,11 @@ package com.liyanxing.resourcedownload.service;
 
 import com.liyanxing.resourcedownload.pojo.Resource;
 import com.liyanxing.util.SplitPage.PageBean;
+import com.sun.xml.internal.ws.resources.HttpserverMessages;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 
 public interface ResourceService
 {
@@ -38,4 +42,12 @@ public interface ResourceService
      * @param software
      */
     void modifyResource(Resource resource);
+
+    /**
+     * 资源下载
+     * @param id
+     * @param response
+     * @return
+     */
+    public void resourceDownload(int id, HttpServletResponse response);
 }
