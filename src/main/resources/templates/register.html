@@ -1,58 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 适配手机 -->
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>注册</title>
 
-        <title>用户注册</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-        <link href="https://cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css" rel="stylesheet">  <!-- 表单验证 css文件 -->
+		<link href="/page/register/style.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="/page/register/js/jquery.js"></script>
+		<script type="text/javascript" src="/page/register/js/jquery.i18n.properties-1.0.9.js" ></script>
+		<script type="text/javascript" src="/page/register/js/jquery-ui-1.10.3.custom.js"></script>
+		<script type="text/javascript" src="/page/register/js/jquery.validate.js"></script>
+		<script type="text/javascript" src="/page/register/js/md5.js"></script>
+		<script type="text/javascript" src="/page/register/js/page_regist.js?lang=zh"></script>
 
-        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script> <!-- jquery -->
-        <script src="https://cdn.bootcss.com/moment.js/2.18.1/moment-with-locales.min.js"></script>
-        <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script src="https://cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script> <!-- 表单验证 js文件 -->
+		<!--[if IE]>
+			<script src="/page/register/js/html5.js"></script>
+		<![endif]-->
+		<!--[if lte IE 6]>
+			<script src="/page/register/js/DD_belatedPNG_0.0.8a-min.js" language="javascript"></script>
+			<script>DD_belatedPNG.fix('div,li,a,h3,span,img,.png_bg,ul,input,dd,dt');</script>
+		<![endif]-->
+	</head>
 
-        <script src="/page/register/register.js"></script>
-    </head>
+	<body class="loginbody">
+		<div class="dataEye">
 
-    <body>
-        <div id="register" class="col-md-4 col-md-offset-4">
-            <form id="register-form" action="/commonuser/register" class="form-horizontal" method="POST">
+			<div class="loginbox registbox">
+				<div class="logo-a">
+					<img src="/page/register/images/logo-a.png">
+				</div>
 
-                <div class="form-group">
-                    <label class="col-md-2 control-label"><span class="text-danger">*</span>用户名：</label>
-                    <div class="col-md-10 has-success">
-                        <input id="userName" name="name" type="text" class="form-control" placeholder="请输入用户名(3-7个字符)"/>
-                        <div id="has-reg" style="color: red; display: none;">此用户名已被注册</div>
-                    </div>
-                </div>
+				<div class="login-content reg-content">
 
-                <div class="form-group">
-                    <label class="col-md-2 control-label"><span class="text-danger">*</span>密码：</label>
-                    <div class="col-md-10 has-success">
-                        <input name="password" type="password" class="form-control" placeholder="请输入密码(4-8个字符)"/>
-                    </div>
-                </div>
+					<div class="loginbox-title">
+						<h3>注册</h3>
+					</div>
 
-                <div class="form-group">
-                    <label class="col-md-2 control-label small"><span class="text-danger">*</span>重复密码：</label>
-                    <div class="col-md-10 has-success">
-                        <input name="repPassword" type="password" class="form-control"/>
-                    </div>
-                </div>
+					<form id="signupForm" action="/commonuser/register" method="POST">
+						<div class="login-error"></div>
+						<div class="row">
+							<label class="field" for="name">用户名(3-7个字符)</label>
+							<input type="text" value="" class="input-text-user noPic input-click" name="name" id="name">
+						</div>
+						<div class="row">
+							<label class="field" for="password">密码(4-16个字符)</label>
+							<input type="password" value="" class="input-text-password noPic input-click" name="password" id="password">
+						</div>
+						<div class="row">
+							<label class="field" for="passwordAgain">确认密码</label>
+							<input type="password" value="" class="input-text-password noPic input-click" name="passwordAgain" id="passwordAgain">
+						</div>
+						<div class="row btnArea">
+							<input type="submit" value="注册">
+						</div>
+					</form>
+				</div>
 
-                <div class="form-group">
-                    <div class="col-md-10 col-md-offset-2">
-                        <button id="submitData" type="submit" class="btn btn-primary">注册</button>
-                        <button type="reset" class="btn btn-danger">重置</button>
-                    </div>
-                </div>
-
-            </form>
-        </div>
-    </body>
+				<div class="go-regist">
+					已有帐号,请<a href="/toLogin" class="link">登录</a>
+				</div>
+			</div>
+			
+			<div id="footer">
+				<div class="dblock">
+					<div class="inline-block"><img src="/page/register/images/logo-gray.png"></div>
+					<div class="inline-block copyright">
+						<p>李高飞 曲阜师范大学</p>
+						<!-- <p> Copyright © 2013 JS代码网</p> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
