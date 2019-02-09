@@ -279,7 +279,7 @@ button.btn-img .icon,a.btn-img .icon{margin:0 0 -6px -3px;*position:absolute;*le
 
 a.btn-big1{height:35px;line-height:35px;font-size:15px;padding:0 20px;}
 
-.login-btn{display:block;background:url(../images/bg.png) repeat-x left top;width:330px;text-align:center;height:35px;line-height:35px;color:white;font-size:16px;border-radius:3px;border:1px solid #215A8D;}
+.login-btn{display:block;background:url("images/btn.png") repeat-x left top;width:330px;text-align:center;height:35px;line-height:35px;color:white;font-size:16px;border-radius:3px;border:1px solid #215A8D;}
 
 
 a.btn-gray{background-position:left -270px;border-color:#575757;}
