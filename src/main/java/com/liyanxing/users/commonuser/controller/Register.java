@@ -5,7 +5,6 @@ import com.liyanxing.users.commonuser.pojo.CommonUserParame;
 import com.liyanxing.users.commonuser.service.CommonUserService;
 import com.liyanxing.users.commonuser.util.UserLogin;
 import com.liyanxing.users.commonuser.util.UserRegister;
-import com.liyanxing.users.commonuser.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -33,24 +32,21 @@ public class Register
 
     /**
      * 用户的注册的表单将提交到这个控制器
-     * @param commonUserParame
+     * @param user
      * @param bindingResult
      * @return
      */
     @PostMapping("/register")
     @Transactional
-    public String register(CommonUserParame commonUserParame, BindingResult bindingResult, Model model)
+    public String register(CommonUser user, BindingResult bindingResult, Model model)
     {
-        CommonUser commonUser = new CommonUser();
-        Util.parameToPojo(commonUserParame, commonUser);
+        String[] passwdAnSalt = UserRegister.encryptPassword(user.getPassword());
+        user.setPassword(passwdAnSalt[0]);
+        user.setSalt(passwdAnSalt[1]);
 
-        String[] passwdAnSalt = UserRegister.encryptPassword(commonUser.getPassword());
-        commonUser.setPassword(passwdAnSalt[0]);
-        commonUser.setSalt(passwdAnSalt[1]);
+        service.insertAcommonUser(user);
 
-        service.insertAcommonUser(commonUser);
-
-        return UserLogin.userLogin(commonUser, model); //注册后立马登录
+        return UserLogin.userLogin(user, model); //注册后立马登录
     }
 
     /**

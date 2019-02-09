@@ -213,7 +213,7 @@ body a:hover {
 }
 
 body {
-    background: url("/image/page/message.png") no-repeat;
+    background: url("bg.png") no-repeat;
     background-size: cover;
     background-size: cover;
     -webkit-background-size: cover;

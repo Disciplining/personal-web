@@ -16,7 +16,7 @@ public interface CommonUserMapper
      * 查询所有普通用户的所有信息
      * @return
      */
-    @Select("select * from common_user")
+    @Select("select * from `common_user`")
     List<CommonUser> selectAllCommonUser();
 
     /**
@@ -32,6 +32,6 @@ public interface CommonUserMapper
      * 插入一个普通用户
      * @param commonUser
      */
-    @Insert("insert into common_user (`name`,`password`,`salt`,`sex`,`birthday`,`email`) values (#{name},#{password},#{salt},#{sex},#{birthday},#{email})")
+    @Insert("insert into common_user (`name`,`password`,`salt`) values (#{name},#{password},#{salt})")
     void insertAcommonUser(CommonUser commonUser);
 }
