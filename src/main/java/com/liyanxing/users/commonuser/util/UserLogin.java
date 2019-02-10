@@ -39,7 +39,7 @@ public class UserLogin
         {
             subject.login(token); //login()方法会调用 Realm类中执行认证逻辑的方法，并将这个参数传递给doGetAuthenticationInfo()方法
             model.addAttribute("user_name", user.getName());
-            return "index";
+            return "redirect:/";
         }
         catch (IncorrectCredentialsException e) //抛出这个异常说明密码错误
         {

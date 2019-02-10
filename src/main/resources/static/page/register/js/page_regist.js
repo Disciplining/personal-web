@@ -43,8 +43,7 @@ $(document).ready(function(){
 					name: 
 						{
 							required: true,
-							minlength: 3,
-							maxlength: 7
+							maxlength: 10
 						},
 					password: 
 						{
@@ -63,7 +62,6 @@ $(document).ready(function(){
 					name: 
 					{
 						required: $.i18n.prop("请输入用户名"),
-						minlength: jQuery.format($.i18n.prop("用户名过短")),
 						maxlength: jQuery.format($.i18n.prop("用户名过长"))
 					},
 					password: 

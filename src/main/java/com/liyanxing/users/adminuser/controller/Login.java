@@ -35,7 +35,7 @@ public class Login
         {
             subject.login(token);
             model.addAttribute("user_name", user.getName());
-            return "index";
+            return "redirect:/";
         }
         catch (UnknownAccountException e)
         {

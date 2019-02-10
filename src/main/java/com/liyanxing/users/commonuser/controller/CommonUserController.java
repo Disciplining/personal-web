@@ -53,6 +53,6 @@ public class CommonUserController
     public String logout()
     {
         SecurityUtils.getSubject().logout(); //注销登录
-        return "index";
+        return "redirect:/";
     }
 }

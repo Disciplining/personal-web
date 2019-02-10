@@ -40,8 +40,9 @@
 					<form id="signupForm" action="/commonuser/register" method="POST">
 						<div class="login-error"></div>
 						<div class="row">
-							<label class="field" for="name">用户名(3-7个字符)</label>
+							<label class="field" for="name">用户名(最长10个字符)</label>
 							<input type="text" value="" class="input-text-user noPic input-click" name="name" id="name">
+							<div id="has-reg" style="display: none; color: red">此用户名已被注册</div>
 						</div>
 						<div class="row">
 							<label class="field" for="password">密码(4-16个字符)</label>
@@ -52,7 +53,7 @@
 							<input type="password" value="" class="input-text-password noPic input-click" name="passwordAgain" id="passwordAgain">
 						</div>
 						<div class="row btnArea">
-							<input class="login-btn" type="submit" value="注册">
+							<input id="submit-data" class="login-btn" type="submit" value="注册">
 						</div>
 					</form>
 				</div>
@@ -73,4 +74,70 @@
 			</div>
 		</div>
 	</body>
+
+	<!--检查用户名是否已经被注册-->
+	<script>
+		$('#name').unbind('blur')
+				.bind
+				(
+						'blur',
+						function () //失去焦点时要做的事情
+						{
+							if ($(this).val() != '') //在失去焦点时，只有用户输入了数据才发送ajax
+							{
+								sendAjax();
+							}
+						}
+				);
+
+		/**
+		 * 发送ajax查询
+		 */
+		function sendAjax()
+		{
+			var hasReg;
+			var inputName = $('#name').val();
+			$.ajax
+			(
+					{
+						url : '/commonuser/hasReg',
+						type : 'GET',
+						dataType : 'json',
+						data: {name : inputName},
+						headers:
+								{
+									'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+								},
+						success : function (response)
+						{
+							if(response.msg == true) //查询到用户名已被注册时要做的事
+							{
+								$('#has-reg').css('display', 'block'); //显示提示
+							}
+							else //查询到用户名未被注册时要做的事
+							{
+								$('#has-reg').css('display', 'none'); //取消显示提示
+							}
+						}
+					}
+			);
+		}
+
+		/**
+		 * 为提交按钮绑定事件，
+		 * 如果显示了提示信息就阻止默认事件
+		 */
+		$('#submit-data').unbind('click')
+				.bind
+				(
+						'click',
+						function (e)
+						{
+							if ($('#has-reg').css('display') == 'block')
+							{
+								e.preventDefault();
+							}
+						}
+				);
+	</script>
 </html>

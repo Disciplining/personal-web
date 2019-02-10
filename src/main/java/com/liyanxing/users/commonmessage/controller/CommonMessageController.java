@@ -50,6 +50,6 @@ public class CommonMessageController
     public String saveOneUserMessage(String messageText)
     {
         service.saveOneUserMessage(messageText);
-        return "index";
+        return "redirect:/";
     }
 }
