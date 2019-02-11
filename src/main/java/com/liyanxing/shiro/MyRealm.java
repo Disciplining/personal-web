@@ -1,11 +1,11 @@
 package com.liyanxing.shiro;
 
+import com.liyanxing.shiro.token.AdminUserToken;
+import com.liyanxing.shiro.token.CommonUserToken;
 import com.liyanxing.users.adminuser.pojo.AdminUser;
 import com.liyanxing.users.adminuser.service.AdminUserService;
 import com.liyanxing.users.commonuser.pojo.CommonUser;
 import com.liyanxing.users.commonuser.service.CommonUserService;
-import com.liyanxing.shiro.token.AdminUserToken;
-import com.liyanxing.shiro.token.CommonUserToken;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
