@@ -1,92 +1,104 @@
 <!DOCTYPE html>
-<html lang="en"
+<html lang="zxx"
       xmlns:th="http://www.w3.org/1999/xhtml">
+
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 适配手机 -->
+        <title>用户登录</title>
+        <!-- Meta-Tags -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <meta name="keywords" content=""/>
 
-        <title>用户注册</title>
-
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link href="https://cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css" rel="stylesheet">  <!-- 表单验证 css文件 -->
-
-        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script> <!-- jquery -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script src="https://cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script> <!-- 表单验证 js文件 -->
-
-        <script src="/page/login/login.js"></script>
+        <script>
+            addEventListener
+            (
+                "load",
+                function ()
+                {
+                    setTimeout(hideURLbar, 0);
+                },
+                false
+            );
+            function hideURLbar()
+            {
+                window.scrollTo(0, 1);
+            }
+        </script>
+        <!-- //Meta-Tags -->
+        <!-- Stylesheets -->
+        <link href="/page/login/css/style.css" rel='stylesheet' type='text/css'/>
+        <!--// Stylesheets -->
+        <!--fonts-->
+        <!-- title -->
+        <link href="http://fonts.googleapis.com/css?family=Abhaya+Libre:400,500,600,700,800" rel="stylesheet">
+        <!-- body -->
+        <!--//fonts-->
+        <script src="/page/login/js/jquery.min.js"></script>
     </head>
 
     <body>
-        <ul id="myTab" class="nav nav-tabs col-md-4 col-md-offset-4">
-            <li class="active">
-                <a href="#common-user" data-toggle="tab">普通用户登录</a>
-            </li>
-            <li>
-                <a href="#admin-user" data-toggle="tab">管理员登录</a>
-            </li>
-        </ul>
-        <div id="myTabContent" class="tab-content">
-            <div class="tab-pane fade in active" id="common-user">
-                <div class="col-md-4 col-md-offset-4">
-                    <form id="common-login-form" action="/commonuser/login" class="form-horizontal" method="POST">
+        <header id="hed-common">
+            <h1>普通用户登录</h1>
+        </header>
 
-                        <div class="form-group">
-                            <label class="col-md-2 control-label"><span class="text-danger">*</span>用户名：</label>
-                            <div class="col-md-10 has-success">
-                                <input name="name" type="text" class="form-control"/>
-                                <small style="color:red;" th:text="${no_account}"></small>
-                            </div>
-                        </div>
+        <!-- 管理员 -->
+        <header id="hed-admin" style="display:none">
+            <h1>管理员登录</h1>
+        </header>
 
-                        <div class="form-group">
-                            <label class="col-md-2 control-label"><span class="text-danger">*</span>密码：</label>
-                            <div class="col-md-10 has-success">
-                                <input name="password" type="password" class="form-control"/>
-                                <small style="color:red;" th:text="${error_passwd}"></small>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-10 col-md-offset-2">
-                                <button type="submit" class="btn btn-primary">登录</button>
-                                <button type="reset" class="btn btn-danger">重置</button>
-                            </div>
-                        </div>
-
-                    </form>
+        <div class="w3ls-contact"> <!-- form starts here -->
+            <form id="form-common" action="/commonuser/login" method="post">
+                <div class="agile-field-txt">
+                    <label>用户名</label>
+                    <input type="text" name="name" required="required"/>
+                    <small style="color:red;" th:text="${no_account_common}"></small>
                 </div>
-            </div>
-            <div class="tab-pane fade" id="admin-user">
-                <div  class="col-md-4 col-md-offset-4">
-                    <form id="admin-login-form" action="/adminUser/login" class="form-horizontal" method="POST">
 
-                        <div class="form-group">
-                            <label class="col-md-2 control-label"><span class="text-danger">*</span>用户名：</label>
-                            <div class="col-md-10 has-success">
-                                <input name="name" type="text" class="form-control"/>
-                                <small style="color:red;" th:text="${no_account}"></small>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-2 control-label"><span class="text-danger">*</span>密码：</label>
-                            <div class="col-md-10 has-success">
-                                <input name="password" type="password" class="form-control"/>
-                                <small style="color:red;" th:text="${error_passwd}"></small>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-10 col-md-offset-2">
-                                <button type="submit" class="btn btn-primary">登录</button>
-                                <button type="reset" class="btn btn-danger">重置</button>
-                            </div>
-                        </div>
-
-                    </form>
+                <div class="agile-field-txt">
+                    <label>密码</label>
+                    <input type="password" name="password" required="required"/>
+                    <small style="color:red;" th:text="${error_passwd_common}"></small>
                 </div>
-            </div>
+
+                <div class="w3ls-contact  w3l-sub">
+                    <input type="submit" value="登录">
+                </div>
+                <div class="w3ls-contact  w3l-sub">
+                    <span id="to-admin">切换到管理员登录</span>
+                </div>
+            </form>
+
+            <!-- 管理员 -->
+            <form id="form-admin" action="/adminUser/login" method="post" style="display:none">
+                    <div class="agile-field-txt">
+                        <label>用户名</label>
+                        <input type="text" name="name" required="required"/>
+                        <small style="color:red;" th:text="${no_account_admin}"></small>
+                    </div>
+    
+                    <div class="agile-field-txt">
+                        <label>密码</label>
+                        <input type="password" name="password" required="required"/>
+                        <small style="color:red;" th:text="${error_passwd_admin}"></small>
+                    </div>
+    
+                    <div class="w3ls-contact  w3l-sub">
+                        <input type="submit" value="登录">
+                    </div>
+                    <div class="w3ls-contact  w3l-sub">
+                        <span id="to-common">切换到普通用户登录</span>
+                    </div>
+                </form>
+        </div> <!-- //form ends here -->
+
+        <div class="copy-wthree">
+            <p>
+                李高飞&nbsp;曲阜师范大学
+            </p>
         </div>
+        <span id="status" th:text="${status}" style="display: none"></span>
+        <script src="/page/login/js/login.js"></script>
     </body>
+<!-- //Body -->
+
 </html>

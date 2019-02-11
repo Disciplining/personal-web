@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
 /**
  * 管事员登录相关
@@ -25,7 +26,7 @@ public class Login
      * @return
      */
     @PostMapping("/login")
-    public String login(AdminUser user, Model model)
+    public String login(AdminUser user, RedirectAttributesModelMap model)
     {
         UsernamePasswordToken token = new AdminUserToken(user.getName(), user.getPassword());
 
@@ -34,20 +35,21 @@ public class Login
         try
         {
             subject.login(token);
-            model.addAttribute("user_name", user.getName());
             return "redirect:/";
         }
         catch (UnknownAccountException e)
         {
             //此用户不存在
-            model.addAttribute("no_account", "此用户不存在");
-            return "login";
+            model.addAttribute("noAccountAdmin", "此用户不存在");
+            model.addAttribute("status","admin");
+            return "redirect:/toLogin";
         }
         catch (IncorrectCredentialsException e)
         {
             //密码不正确
-            model.addAttribute("error_passwd", "密码错误");
-            return "login";
+            model.addAttribute("errorPasswdAdmin", "密码错误");
+            model.addAttribute("status","admin");
+            return "redirect:/toLogin";
         }
     }
 }

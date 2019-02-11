@@ -1,7 +1,6 @@
 package com.liyanxing.users.commonuser.controller;
 
 import com.liyanxing.users.commonuser.pojo.CommonUser;
-import com.liyanxing.users.commonuser.pojo.CommonUserParame;
 import com.liyanxing.users.commonuser.service.CommonUserService;
 import com.liyanxing.users.commonuser.util.UserLogin;
 import com.liyanxing.users.commonuser.util.UserRegister;
@@ -9,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,7 +37,7 @@ public class Register
      */
     @PostMapping("/register")
     @Transactional
-    public String register(CommonUser user, BindingResult bindingResult, Model model)
+    public String register(CommonUser user, BindingResult bindingResult, RedirectAttributesModelMap model)
     {
         String[] passwdAnSalt = UserRegister.encryptPassword(user.getPassword());
         user.setPassword(passwdAnSalt[0]);

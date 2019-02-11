@@ -1,13 +1,15 @@
 package com.liyanxing.users.commonuser.util;
 
-import com.liyanxing.users.commonuser.pojo.CommonUser;
+
 import com.liyanxing.shiro.token.CommonUserToken;
+import com.liyanxing.users.commonuser.pojo.CommonUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.subject.Subject;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
 public class UserLogin
 {
@@ -29,7 +31,7 @@ public class UserLogin
      * @param model
      * @return
      */
-    public static String userLogin(CommonUser user, Model model)
+    public static String userLogin(CommonUser user, RedirectAttributesModelMap model)
     {
         Subject subject = SecurityUtils.getSubject(); //获得Subject对象
         UsernamePasswordToken token = new CommonUserToken(user.getName(), user.getPassword()); //将用户输入的用户名写密码封装到一个UsernamePasswordToken对象中
@@ -38,13 +40,14 @@ public class UserLogin
         try
         {
             subject.login(token); //login()方法会调用 Realm类中执行认证逻辑的方法，并将这个参数传递给doGetAuthenticationInfo()方法
-            model.addAttribute("user_name", user.getName());
             return "redirect:/";
         }
         catch (IncorrectCredentialsException e) //抛出这个异常说明密码错误
         {
-            model.addAttribute("error_passwd", "密码错误");
-            return "login";
+            model.addAttribute("errorPasswdCommon", "密码错误");
+            model.addAttribute("status","common");
+
+            return "redirect:/toLogin";
         }
     }
 }
