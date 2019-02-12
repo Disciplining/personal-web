@@ -1,110 +1,223 @@
-<!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:shiro="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 适配手机 -->
+﻿<!DOCTYPE html>
 
-        <title>首页 | Discipline的个人网站</title>
+<html lang="en">
+	<head>
+		<title>首页 | Discipline的个人网站</title>
 
-        <!-- jquery -->
-        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="" />
 
-        <!-- bootstrap js与css文件 -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script type="application/x-javascript"> 
+			addEventListener
+			(
+				"load", 
+				function() 
+				{ 
+					setTimeout(hideURLbar, 0); 
+				}, 
+				false
+			); 
+			function hideURLbar()
+			{ 
+				window.scrollTo(0,1); 
+			} 
+		</script>
 
-        <style>
-            #navbar
-            {
-                margin-bottom: 20px;
-            }
-        </style>
+		<link href="/page/index/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+		<link rel="stylesheet" href="/page/index/css/swipebox.css">
+		<link rel="stylesheet" href="/page/index/css/style.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="/page/index/css/font-awesome.min.css" type="text/css" media="all" />
 
-        <link rel="stylesheet" href="/page/index/style.css"/>
-    </head>
+		<link href="http://fonts.googleapis.com/css?family=Marck+Script" rel="stylesheet">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 
-    <body>
-        <!---------------------------- 通栏 ---------------------------->
-        <nav id="navbar" class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
-                        <!--导航头-->
-                        <div class="navbar-header">
-                            <a id="index-text" class="navbar-brand" href="/">首页</a>
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#my_navbar">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
+		<!--<script src="/page/index/js/jquery-1.11.1.min.js"></script>-->
+		<script src="/page/index/js/jquery-1.11.1.min.js"></script>
+		<script src="/page/index/js/bootstrap.js"></script>
+		<script type="text/javascript" src="/page/index/js/move-top.js"></script>
+		<script type="text/javascript" src="/page/index/js/easing.js"></script>
 
-                        <!--合并区-->
-                        <div class="collapse navbar-collapse" id="my_navbar">
-                            <ul class="nav navbar-nav navbar-left">
-                                <li><a href="/toShowSoftware?currPage=1">软件推荐</a></li>
-                                <li><a href="/toShowWebsite?currPage=1">网站推荐</a></li>
-                                <li><a href="/toShowResourcePage?currPage=1">资源下载</a></li>
-                                <li><a href="/toMessagePage">给我留言</a></li>
-                            </ul>
-                            <div shiro:notAuthenticated>
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li>
-                                        <a href="/toLogin">
-                                            <span class="glyphicon glyphicon-log-in"></span>&ensp;登录
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/commonuser/toRegister" target="_blank">
-                                            <span class="glyphicon glyphicon-user"></span>&ensp;注册
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div shiro:authenticated>
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li class="dropdown">
-                                        <a id="dropdown-title" href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            <span th:text="${user_name}"></span>
-                                            <span class="caret"></span>
-                                        </a>
-                                        <ul id="dropdown-menu" class="dropdown-menu">
-                                            <li shiro:hasRole="common-user"><a href="#">修改密码</a></li>
-                                            <li><a href="/commonuser/logout">退出登录</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <!---------------------------- 通栏结束 ---------------------------->
-        <div id="main" class="container">
-            <div id="first-row" class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <h1 class="text-center">Discipline的个人网站</h1>
-                </div>
-            </div>
-            <div id="second-row" class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <a href="#">
-                        <div id="about-me" class="col-md-4 col-md-offset-4">
-                            About&ensp;Me
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div id="support-me" class="col-md-4 col-md-offset-4">
-                            Support&ensp;Me
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+		<script type="text/javascript">
+			$(document).ready
+			(
+				function() 
+				{
+					$().UItoTop({ easingType: 'easeOutQuart' });				
+				}
+			);
+		</script>
 
-        <div th:text="${msg}"></div>
-    </body>
+		<script src="/page/index/js/jquery.swipebox.min.js"></script>
+
+		<script type="text/javascript">
+			jQuery
+			(
+				function($) 
+				{
+					$(".swipebox").swipebox();
+				}
+			);
+		</script>
+	</head>
+
+<body>
+	<div class="banner" id="home">
+		<div class="header-bottom">
+		     <div class="container">
+			  <div class="fixed-header">
+			      <!--logo-->
+			       <div class="logo">
+                      <a href="/"><h1>首页</h1></a>
+				   </div>
+					<!--//logo-->
+					<nav class="navbar navbar-default cl-effect-16" id="cl-effect-16">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<div id="navbar" class="navbar-collapse navbar-right collapse hover-effect">
+							<ul class="nav navbar-nav">
+								<li><a class="scroll" href="/toShowSoftware?currPage=1" >软件推荐</a></li>
+								<li><a class="scroll" href="/toShowWebsite?currPage=1" >网站推荐</a></li>
+								<li><a class="scroll" href="/toShowResourcePage?currPage=1" >资源下载</a></li>
+								<li><a class="scroll" href="/toMessagePage" >给我留言</a></li>
+								<li shiro:notAuthenticated><a class="scroll" href="/commonuser/toRegister" target="_blank">注册</a></li>
+								<li shiro:notAuthenticated><a class="scroll" href="/toLogin" >登录</a></li>
+								<li shiro:authenticated class="dropdown">
+									<a id="dropdown-title" href="#" class="dropdown-toggle" data-toggle="dropdown">
+										<span th:text="${user_name}"></span>
+										<span class="caret"></span>
+									</a>
+									<ul id="dropdown-menu" class="dropdown-menu">
+										<li shiro:hasRole="common-user"><a href="#">修改密码</a></li>
+                                        <li shiro:hasRole="administrator"><a href="#">进入管理页面</a></li>
+										<li><a href="/commonuser/logout">退出登录</a></li>
+									</ul>
+								</li>
+							</ul>	
+						</div>
+						</nav>
+
+				 <div class="clearfix"></div>
+			 </div>
+		</div>
+
+		</div>
+			<div class="banner-slider w3layouts">
+					<div class="callbacks_container">
+						<ul class="rslides" id="slider4">
+							<li>
+								<a href="https://www.baidu.com/" target="_blank">
+									<div class="banner-info">
+										<h3>About Me</h3>
+										<p><small>关于我</small></p>
+										<div class="arrows"><img src="/page/index/images/border.png" alt="border"/></div>
+										<span>Discipline的个人网站</span>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="https://baike.baidu.com/item/1/31661?fr=aladdin" target="_blank">
+									<div class="banner-info">
+										<h3>Support Me</h3>
+										<p><small>支持我</small></p>
+										<div class="arrows"><img src="/page/index/images/border.png" alt="border"/></div>
+										<span>Discipline的个人网站</span>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="https://baike.baidu.com/item/android/60243" target="_blank">
+									<div class="banner-info">
+										<h3>My Life</h3>
+										<p><small>生活</small></p>
+										<div class="arrows"><img src="/page/index/images/border.png" alt="border"/></div>
+										<span>Discipline的个人网站</span>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				<!--banner Slider starts Here-->
+				<script src="/page/index/js/responsiveslides.min.js"></script>
+
+				<script>
+					// You can also use "$(window).load(function() {"
+					$(function () {
+					// Slideshow 4
+					$("#slider4").responsiveSlides({
+						auto: true,
+						pager:true,
+						nav:false,
+						speed: 500,
+						namespace: "callbacks",
+						before: function () {
+						$('.events').append("<li>before event fired.</li>");
+						},
+						after: function () {
+						$('.events').append("<li>after event fired.</li>");
+						}
+					});
+				
+					});
+				</script>
+				<!--banner Slider starts Here-->
+			</div>
+		</div>
+
+		<!-- About-->
+		<div class="about-w3" id="about">
+		<div class="container">
+			<div class="col-md-6 about-left-w3l">
+				<h2>关于</h2>
+				<p>一直希望能有一块地方，分享自己所拥有的，这便是本站的由来。</p>
+				<div class="about-left-wthree">
+					<div class="about-left-w3l-sec1">
+						<div class="col-md-2 about-left-icon-w3ls">
+							<i class="fa fa-qq" aria-hidden="true"></i>
+						</div>
+						<div class="col-md-10 about-left-text-w3ls">
+							<h4>4166 9854 7</h4>
+							<p>QQ号</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="about-left-w3l-sec2">
+						<div class="col-md-2 about-left-icon-w3ls">
+							<i class="fa fa-weixin" aria-hidden="true"></i>
+						</div>
+						<div class="col-md-10 about-left-text-w3ls">
+							<h4>THievesWord</h4>
+							<p>微信号</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="about-left-w3l-sec3">
+						<div class="col-md-2 about-left-icon-w3ls">
+							<i class="fa fa-graduation-cap" aria-hidden="true"></i>
+						</div>
+						<div class="col-md-10 about-left-text-w3ls">
+							<h4>曲阜师范大学</h4>
+							<p>山东省日照市东港区</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 about-right-w3l">
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<!-- //About-->
+	
+	<div class="copy-agileinfo">
+		<div class="container">
+			<p>李高飞&nbsp;&nbsp;&nbsp;曲阜师范大学</p>
+		</div>
+	</div>
+</body>
 </html>
