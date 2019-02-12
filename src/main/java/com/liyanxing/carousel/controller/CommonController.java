@@ -15,4 +15,14 @@ public class CommonController
     {
         return "carousel/supportMe";
     }
+
+    /**
+     * 跳转到 关于 我页面
+     * @return
+     */
+    @GetMapping("/toAboutMePage")
+    public String toAboutMePage()
+    {
+        return "carousel/abloutMe";
+    }
 }
