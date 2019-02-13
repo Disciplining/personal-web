@@ -25,4 +25,14 @@ public class CommonController
     {
         return "carousel/abloutMe";
     }
+
+    /**
+     * 跳转到 添加照片 页面
+     * @return
+     */
+    @GetMapping("/toAddPhotoPage")
+    public String toAddPhotoPage()
+    {
+        return "carousel/photo/addAphoto";
+    }
 }

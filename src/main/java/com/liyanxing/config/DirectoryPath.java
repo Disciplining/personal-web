@@ -11,35 +11,55 @@ public class DirectoryPath
      */
     public static String MAIN_PICTURE_PICTURE;
 
+    /*------------------------------------*/
+
     /**
-     * 软件推荐的图片应该存入的子目录
+     * 软件推荐图片  子目录
      */
     public static final String SOFTWARE_RECOMMEND_CHIL = "softwareRecommend/";
 
     /**
-     * 软件推荐图片应该存入的最终目录
+     * 软件推荐图片  最终目录
      */
     public static String SOFTWARE_RECOMMEND_DIR;
 
+    /*------------------------------------*/
+
     /**
-     * 网站推荐的图片应该存入的子目录
+     * 网站推荐图片  子目录
      */
     public static final String WEBSITE_RECOMMEND_CHIL = "websiteRecommend/";
 
     /**
-     * 网站推荐图片应该存入的最终目录
+     * 网站推荐图片  最终目录
      */
     public static String WEBSITE_RECOMMEND_DIR;
 
+    /*------------------------------------*/
+
     /**
-     * 资源下载的图上 子目录
+     * 资源下载图上 子目录
      */
     public static String RESOURCE_DOWNLOAD_CHIL = "resourceDownload/";
 
     /**
-     * 资源下载的图片 最终目录
+     * 资源下载图片 最终目录
      */
     public static String RESOURCE_DOWNLOAD_DIR;
+
+    /*------------------------------------*/
+
+    /**
+     * 相片 子目录
+     */
+    public static String PHOTO_CHIL = "photo/";
+
+    /**
+     * 相片 最终目录
+     */
+    public static String PHOTO_DIR;
+
+    /*------------------------------------*/
 
     /**
      * 资源下载的资源目录
@@ -62,5 +82,6 @@ public class DirectoryPath
         SOFTWARE_RECOMMEND_DIR = MAIN_PICTURE_PICTURE + SOFTWARE_RECOMMEND_CHIL; //设置软件推荐图片应该存入的最终目录
         WEBSITE_RECOMMEND_DIR = MAIN_PICTURE_PICTURE + WEBSITE_RECOMMEND_CHIL; //设置网站推荐图片应该存入的最终目录
         RESOURCE_DOWNLOAD_DIR = MAIN_PICTURE_PICTURE + RESOURCE_DOWNLOAD_CHIL; //设置软件图片 的 最终目录
+        PHOTO_DIR = MAIN_PICTURE_PICTURE + PHOTO_CHIL;
     }
 }
