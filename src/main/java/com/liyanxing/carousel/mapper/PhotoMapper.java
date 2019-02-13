@@ -14,6 +14,7 @@ public interface PhotoMapper
      * 查询所的照片
      * @return
      */
+    @Select("select * from `photo`")
     List<Photo> selectAllPhoto();
 
     /**

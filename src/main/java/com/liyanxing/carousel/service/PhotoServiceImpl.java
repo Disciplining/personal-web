@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.util.List;
+
 @Transactional
 @Service("photoServiceImpl")
 public class PhotoServiceImpl implements PhotoService
@@ -42,7 +45,15 @@ public class PhotoServiceImpl implements PhotoService
     @Override
     public void deleteById(int id)
     {
+        Photo photo = mapper.selectAbyId(id);
+        File photoPic = new File(DirectoryPath.MAIN_PICTURE_PICTURE + photo.getPic());
 
+        if (photoPic.exists())
+        {
+            photoPic.delete();
+        }
+
+        mapper.deleteAbyId(id);
     }
 
     /**
@@ -66,5 +77,16 @@ public class PhotoServiceImpl implements PhotoService
     public void modifyPhoto(Photo photo)
     {
 
+    }
+
+    /**
+     * 查找所有的照片
+     *
+     * @return
+     */
+    @Override
+    public List<Photo> selectAllPhoto()
+    {
+        return mapper.selectAllPhoto();
     }
 }

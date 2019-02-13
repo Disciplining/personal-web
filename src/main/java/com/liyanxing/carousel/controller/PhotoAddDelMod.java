@@ -5,8 +5,9 @@ import com.liyanxing.carousel.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -27,16 +28,27 @@ public class PhotoAddDelMod
      * @return
      */
     @PostMapping("/addAphoto")
-    @ResponseBody
     public String addAphoto(MultipartFile pic, String title, String description)
     {
-        System.out.println(pic + "  " + title + " " + description);
-
         Photo photo = new Photo();
         photo.setTitle(title);
         photo.setDescription(description);
         service.saveAphoto(photo,pic);
 
-        return pic + "  " + title + " " + description;
+        return "redirect:/toShowPhotoPage";
+    }
+
+    /**
+     * 根据id删除一张照片
+     * @param id
+     * @return
+     */
+    @GetMapping("/deleteAphoto")
+    public String deleteAphoto(@RequestParam(name = "id") int id)
+    {
+        service.deleteById(id);
+        System.out.println("照片：" + id);
+
+        return "redirect:/toShowPhotoPage";
     }
 }

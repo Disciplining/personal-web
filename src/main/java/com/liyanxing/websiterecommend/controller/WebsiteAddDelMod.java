@@ -1,6 +1,5 @@
 package com.liyanxing.websiterecommend.controller;
 
-import com.liyanxing.solftwarerecommend.pojo.SoftwareRecommend;
 import com.liyanxing.websiterecommend.pojo.Website;
 import com.liyanxing.websiterecommend.service.WebsiteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,8 +71,6 @@ public class WebsiteAddDelMod
         website.setName(name);
         website.setIntroduction(introduction);
         website.setOfficialWeb(officialWeb);
-
-        System.out.println(website.toString());
 
         service.modifyWebsite(website);
 

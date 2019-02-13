@@ -54,8 +54,6 @@ public class Util
         String format = getFormar(file.getOriginalFilename()); //文件的扩展名
         File picture = new File(dirPath + randomStr + format);
 
-        System.out.println("格式：" + format);
-
         try
         {
             file.transferTo(picture);

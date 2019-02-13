@@ -3,6 +3,8 @@ package com.liyanxing.carousel.service;
 import com.liyanxing.carousel.pojo.Photo;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 public interface PhotoService
 {
     /**
@@ -30,4 +32,10 @@ public interface PhotoService
      * @param photo
      */
     void modifyPhoto(Photo photo);
+
+    /**
+     * 查找所有的照片
+     * @return
+     */
+    List<Photo> selectAllPhoto();
 }
