@@ -51,4 +51,12 @@ public class PhotoAddDelMod
 
         return "redirect:/toShowPhotoPage";
     }
+
+    @PostMapping("/modifyPhoto")
+    public String modifyPhoto(Photo photo)
+    {
+        service.modifyPhoto(photo);
+
+        return "redirect:/toShowPhotoPage";
+    }
 }

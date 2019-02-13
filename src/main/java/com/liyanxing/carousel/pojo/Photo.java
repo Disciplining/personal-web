@@ -46,4 +46,15 @@ public class Photo
     {
         this.description = description;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Photo{" +
+                "id=" + id +
+                ", pic='" + pic + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

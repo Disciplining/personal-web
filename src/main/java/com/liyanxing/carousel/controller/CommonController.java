@@ -1,11 +1,13 @@
 package com.liyanxing.carousel.controller;
 
+import com.liyanxing.carousel.pojo.Photo;
 import com.liyanxing.carousel.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller("carouselCommonController")
 public class CommonController
@@ -54,5 +56,19 @@ public class CommonController
         model.addAttribute("data", service.selectAllPhoto());
 
         return "carousel/photo/showPhoto";
+    }
+
+    /**
+     * 跳转到 照片修改 页面
+     * @return
+     */
+    @GetMapping("/toModPhoto")
+    public String toModPhoto(@RequestParam(name = "id") int id, Model model)
+    {
+        Photo photo = service.selectById(id);
+        System.out.println(photo.toString());
+        model.addAttribute("photo", photo);
+
+        return "carousel/photo/modPhoto";
     }
 }

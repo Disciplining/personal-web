@@ -50,7 +50,7 @@
                                     <div class="tm-img-gallery-info-container">                                    
                                         <h2 class="tm-text-title tm-gallery-title tm-white"><span class="tm-white">我的相册</span></h2>
                                         <p class="tm-text">点滴生活，点滴记录。</p>
-                                        <a href="/toAddPhotoPage" class="btn btn-success">添加一张照片</a>
+                                        <a href="/toAddPhotoPage" class="btn btn-success" shiro:hasRole="administrator">添加一张照片</a>
                                     </div>
 
                                     <!-- 照片列表 -->
@@ -63,8 +63,8 @@
                                                 <a th:href="@{ '/images/' + ${foo.pic} }">View more</a>
                                             </figcaption>
                                         </figure>
-                                        <a href="#" class="btn btn-success">修改</a>
-                                        <a th:href="@{ /deleteAphoto(id=${foo.id}) }" class="btn btn-danger">删除</a>
+                                        <a th:href="@{ /toModPhoto(id=${foo.id}) }" class="btn btn-success" shiro:hasRole="administrator">修改</a>
+                                        <a th:href="@{ /deleteAphoto(id=${foo.id}) }" class="btn btn-danger" shiro:hasRole="administrator">删除</a>
                                     </div>
                                     <!-- // 照片列表 -->
                                 </div>                                 

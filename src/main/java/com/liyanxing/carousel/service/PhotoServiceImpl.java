@@ -65,7 +65,7 @@ public class PhotoServiceImpl implements PhotoService
     @Override
     public Photo selectById(int id)
     {
-        return null;
+        return mapper.selectAbyId(id);
     }
 
     /**
@@ -76,7 +76,7 @@ public class PhotoServiceImpl implements PhotoService
     @Override
     public void modifyPhoto(Photo photo)
     {
-
+        mapper.modifyPhoto(photo);
     }
 
     /**
