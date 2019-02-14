@@ -55,4 +55,14 @@ public class CommonUserController
         SecurityUtils.getSubject().logout(); //注销登录
         return "redirect:/";
     }
+
+    /**
+     * 跳转到 密码修改 页面
+     * @return
+     */
+    @GetMapping("/toChangePasswordPage")
+    public String toChangePasswordPage()
+    {
+        return "changePassowrd";
+    }
 }

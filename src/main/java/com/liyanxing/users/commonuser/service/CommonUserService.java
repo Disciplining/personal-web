@@ -24,4 +24,12 @@ public interface CommonUserService
      * @param commonUser
      */
     void insertAcommonUser(CommonUser commonUser);
+
+    /**
+     * 修改普通用户的密码
+     * @param oldPassword
+     * @param newPassword
+     * @return
+     */
+    boolean changePassword(String oldPassword, String newPassword);
 }

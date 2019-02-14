@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 处理用户的注册
+ * 处理用户的注册相关内容
  */
 @Controller("commonUserRegister")
 @RequestMapping("/commonuser")
@@ -70,5 +71,19 @@ public class Register
         }
 
         return map;
+    }
+
+    @PostMapping("/changePassword")
+    public String changePassword(String oldPassword, String newPassword, Model model)
+    {
+        if (service.changePassword(oldPassword, newPassword))
+        {
+            return "redirect:/";
+        }
+        else
+        {
+            model.addAttribute("error", "旧密码输入错误");
+            return "changePassowrd";
+        }
     }
 }

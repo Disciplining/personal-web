@@ -4,9 +4,11 @@ import com.liyanxing.users.commonuser.pojo.CommonUser;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 @Repository("commonUserMapper")
@@ -34,4 +36,11 @@ public interface CommonUserMapper
      */
     @Insert("insert into common_user (`name`,`password`,`salt`) values (#{name},#{password},#{salt})")
     void insertAcommonUser(CommonUser commonUser);
+
+    /**
+     * 修改一个用户的密码
+     * @param para id：用户的id  password：新密码
+     */
+    @Update("update `common_user` set `password`=#{password} where `common_user_id`=#{id}")
+    void updateApassword(Map<String,Object> para);
 }
