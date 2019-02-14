@@ -98,6 +98,18 @@
         </div>
         <span id="status" th:text="${status}" style="display: none"></span>
         <script src="/page/login/js/login.js"></script>
+        <script>
+            /*获得焦点时隐藏提框*/
+            $('input').unbind('focus')
+                .bind
+                (
+                    'focus',
+                    function ()
+                    {
+                        $('small').css('display', 'none');
+                    }
+                )
+        </script>
     </body>
 <!-- //Body -->
 

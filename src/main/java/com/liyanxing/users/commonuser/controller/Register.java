@@ -76,7 +76,7 @@ public class Register
     @PostMapping("/changePassword")
     public String changePassword(String oldPassword, String newPassword, Model model)
     {
-        if (service.changePassword(oldPassword, newPassword))
+        if (service.changePassword(oldPassword, newPassword)) //修改密码成功
         {
             return "redirect:/";
         }

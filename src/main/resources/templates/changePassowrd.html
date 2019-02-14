@@ -43,11 +43,11 @@
         </header>
 
         <div class="w3ls-contact"> <!-- form starts here -->
-            <form id="main-form" action="changePassword" method="post">
+            <form id="main-form" action="/changePassword" method="post">
                 <div class="agile-field-txt form-group">
                     <label>旧密码:</label>
-                    <input type="password" name="oldPassword" placeholder=" " required=""/>
-                    <small style="color: red" th:text="${error}"></small>
+                    <input id="oldPassword" type="password" name="oldPassword" placeholder=" " required=""/>
+                    <small id="error" style="color: red" th:text="${error}"></small>
                 </div>
 
                 <div class="agile-field-txt form-group">
@@ -130,6 +130,19 @@
                     }
                 }
             );
+        </script>
+
+        <script>
+            /*获得焦点时隐藏提框*/
+            $('input').unbind('focus')
+                .bind
+                (
+                    'focus',
+                    function ()
+                    {
+                        $('#error').css('display', 'none');
+                    }
+                )
         </script>
     </body>
 <!-- //Body -->
