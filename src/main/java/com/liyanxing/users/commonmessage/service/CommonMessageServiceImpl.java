@@ -2,6 +2,7 @@ package com.liyanxing.users.commonmessage.service;
 
 import com.liyanxing.users.commonmessage.mapper.CommonMessageMapper;
 import com.liyanxing.users.commonmessage.pojo.CommonMessage;
+import com.liyanxing.users.commonmessage.pojo.MessageEntity;
 import com.liyanxing.users.commonuser.pojo.CommonUser;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +46,16 @@ public class CommonMessageServiceImpl implements CommonMessageService
         message.setTime(new Date(System.currentTimeMillis()));
 
         mapper.insertOneMessage(message);
+    }
+
+    /**
+     * 获得用户的留言
+     *
+     * @return
+     */
+    @Override
+    public List<MessageEntity> showMessage()
+    {
+        return mapper.showMessage();
     }
 }

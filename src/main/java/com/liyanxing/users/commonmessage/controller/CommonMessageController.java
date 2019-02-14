@@ -1,6 +1,7 @@
 package com.liyanxing.users.commonmessage.controller;
 
 import com.liyanxing.users.commonmessage.pojo.CommonMessage;
+import com.liyanxing.users.commonmessage.pojo.MessageEntity;
 import com.liyanxing.users.commonmessage.service.CommonMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -51,5 +52,16 @@ public class CommonMessageController
     {
         service.saveOneUserMessage(messageText);
         return "redirect:/";
+    }
+
+    /**
+     * 查看用户留言
+     * @return
+     */
+    @ResponseBody
+    @GetMapping("/showMessage")
+    public List<MessageEntity> showMessage()
+    {
+        return service.showMessage();
     }
 }

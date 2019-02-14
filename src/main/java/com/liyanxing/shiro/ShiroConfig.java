@@ -36,6 +36,8 @@ public class ShiroConfig
         map.put("/delete*","roles[" + Roles.ADMINISTRATOR + "]");
         map.put("/modify*","roles[" + Roles.ADMINISTRATOR + "]");
 
+        map.put("/showMessage","roles[" + Roles.ADMINISTRATOR + "]");
+
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
 
         shiroFilterFactoryBean.setLoginUrl("/toLogin");
