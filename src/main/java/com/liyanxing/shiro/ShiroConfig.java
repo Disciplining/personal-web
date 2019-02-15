@@ -27,21 +27,16 @@ public class ShiroConfig
          * 设置拦截URL
          */
         Map<String, String> map = new LinkedHashMap<>();
-
         map.put("/download*", "authc"); //用户登录后才可以下载资源
         map.put("/toMessagePage","roles[" + Roles.COMMON_USER + "]"); //普通用户才可以留言
-
-        //管理员才可以修改资源
-        map.put("/add*","roles[" + Roles.ADMINISTRATOR + "]");
+        map.put("/commonuser/toChangePasswordPage", "roles[" + Roles.COMMON_USER + "]"); //普通用户才可以修改密码
+        map.put("/add*","roles[" + Roles.ADMINISTRATOR + "]"); //管理员才可以修改资源
         map.put("/delete*","roles[" + Roles.ADMINISTRATOR + "]");
         map.put("/modify*","roles[" + Roles.ADMINISTRATOR + "]");
-
-        map.put("/showMessage","roles[" + Roles.ADMINISTRATOR + "]");
-
+        map.put("/showMessage","roles[" + Roles.ADMINISTRATOR + "]"); //管理员才可以查看留言
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
 
         shiroFilterFactoryBean.setLoginUrl("/toLogin");
-
         return  shiroFilterFactoryBean;
     }
 
