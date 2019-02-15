@@ -130,6 +130,22 @@ public class ResourceServiceImpl implements ResourceService
     {
         //构建文件
         Resource resource = mapper.selectAbyId(id);
+
+        if (resource == null)
+        {
+            try
+            {
+                response.sendRedirect("/error/noExist.html");
+            }
+            catch (IOException e)
+            {
+                System.out.println("io异常");
+                e.printStackTrace();
+            }
+
+            return;
+        }
+
         File file = new File("" + resource.getPath());
 
 

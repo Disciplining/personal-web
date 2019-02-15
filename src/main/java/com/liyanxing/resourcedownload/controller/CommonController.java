@@ -36,7 +36,7 @@ public class CommonController
      * @return
      */
     @GetMapping("/toShowResourcePage")
-    public String toShowResourcePage(@RequestParam(name = "currPage") int currPage, Model model)
+    public String toShowResourcePage(@RequestParam(name = "currPage", defaultValue = "1") int currPage, Model model)
     {
         PageBean<Resource> pageBean = service.selectApageData(currPage);
 

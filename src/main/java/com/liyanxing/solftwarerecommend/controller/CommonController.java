@@ -50,7 +50,7 @@ public class CommonController
      * @return
      */
     @GetMapping("/toShowSoftware")
-    public String toShowSoftware(@RequestParam(name = "currPage") int currPage, Model model)
+    public String toShowSoftware(@RequestParam(name = "currPage", defaultValue = "1") int currPage, Model model)
     {
         PageBean<SoftwareRecommend> pageBean = service.selectApageData(currPage);
 

@@ -34,7 +34,7 @@ public class ConmmonController
      * @return
      */
     @GetMapping("/toShowWebsite")
-    public String toShowWebsite(@RequestParam(name = "currPage") int currPage, Model model)
+    public String toShowWebsite(@RequestParam(name = "currPage", defaultValue = "1") int currPage, Model model)
     {
         PageBean<Website> pageBean = service.selectApageData(currPage);
 
