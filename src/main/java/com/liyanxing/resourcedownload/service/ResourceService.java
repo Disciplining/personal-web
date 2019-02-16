@@ -1,12 +1,11 @@
 package com.liyanxing.resourcedownload.service;
 
+
 import com.liyanxing.resourcedownload.pojo.Resource;
 import com.liyanxing.util.SplitPage.PageBean;
-import com.sun.xml.internal.ws.resources.HttpserverMessages;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 
 public interface ResourceService
 {

@@ -46,7 +46,7 @@ public class Util
         File saveDir = new File(dirPath);
         if (!saveDir.exists())
         {
-            saveDir.mkdir();
+            saveDir.mkdirs();
         }
 
         //构建文件对象，并随机命名
