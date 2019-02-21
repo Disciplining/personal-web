@@ -1,6 +1,5 @@
 package com.liyanxing.resourcedownload.service;
 
-
 import com.liyanxing.resourcedownload.pojo.Resource;
 import com.liyanxing.util.SplitPage.PageBean;
 import org.springframework.web.multipart.MultipartFile;

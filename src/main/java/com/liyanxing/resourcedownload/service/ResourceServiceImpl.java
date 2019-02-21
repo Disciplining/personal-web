@@ -175,7 +175,7 @@ public class ResourceServiceImpl implements ResourceService
                 BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
                 /*--------------------------------------------------*/
 
-                OutputStream  servletOutputStream = response.getOutputStream(); //获得用户下载所用的输入流
+                OutputStream servletOutputStream = response.getOutputStream(); //获得用户下载所用的输入流
 
                 /*-------------------从输入流中读取数据，写入输入流中-------------------*/
                 byte[] buffer = new byte[1024]; //用于存储数据的数组

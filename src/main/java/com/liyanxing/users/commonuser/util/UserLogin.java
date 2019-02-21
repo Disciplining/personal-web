@@ -1,6 +1,5 @@
 package com.liyanxing.users.commonuser.util;
 
-
 import com.liyanxing.shiro.token.CommonUserToken;
 import com.liyanxing.users.commonuser.pojo.CommonUser;
 import org.apache.shiro.SecurityUtils;

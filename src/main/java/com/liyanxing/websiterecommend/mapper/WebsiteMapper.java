@@ -1,6 +1,5 @@
 package com.liyanxing.websiterecommend.mapper;
 
-import com.liyanxing.solftwarerecommend.pojo.SoftwareRecommend;
 import com.liyanxing.websiterecommend.pojo.Website;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;

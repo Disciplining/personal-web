@@ -1,7 +1,5 @@
 package com.liyanxing.users.commonuser.pojo;
 
-import java.sql.Date;
-
 public class CommonUser
 {
     private Integer commonUserId;

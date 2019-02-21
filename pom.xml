@@ -72,7 +72,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.liyanxing.MyWebApplication</mainClass>
+					<mainClass>com.liyanxing.MyWebApplication</mainClass> //添加主类
 				</configuration>
 			</plugin>
 		</plugins>
