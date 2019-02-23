@@ -43,6 +43,6 @@ public interface PhotoMapper
      * 修改一张照片的信息
      * @param photo
      */
-    @Update("update `photo` set `title`=#{title}, `description`=#{description}")
+    @Update("update `photo` set `title`=#{title}, `description`=#{description} where `id`=#{id}")
     void modifyPhoto(Photo photo);
 }
