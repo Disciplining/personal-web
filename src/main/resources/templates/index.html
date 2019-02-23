@@ -81,8 +81,8 @@
 									<li><a class="scroll" href="/toShowWebsite?currPage=1" target="_blank">网站推荐</a></li>
 									<li><a class="scroll" href="/toShowResourcePage?currPage=1" target="_blank">资源下载</a></li>
 									<li><a class="scroll" href="/toMessagePage" >给我留言</a></li>
-									<li shiro:notAuthenticated><a class="scroll" href="/commonuser/toRegister" target="_blank">注册</a></li>
 									<li shiro:notAuthenticated><a class="scroll" href="/toLogin" >登录</a></li>
+									<li shiro:notAuthenticated><a class="scroll" href="/commonuser/toRegister" target="_blank">注册</a></li>
 									<li shiro:authenticated class="dropdown">
 										<a id="dropdown-title" href="#" class="dropdown-toggle" data-toggle="dropdown">
 											<span th:text="${user_name}"></span>
