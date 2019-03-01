@@ -50,7 +50,7 @@ public class Util
         }
 
         //构建文件对象，并随机命名
-        String randomStr = new SecureRandomNumberGenerator().nextBytes().toHex(); //生成32位的随机字符串,作为图片的名字。
+        String randomStr = new SecureRandomNumberGenerator().nextBytes().toHex(); //生成32位的随机字符串,作为文件的名字。
         String format = getFormar(file.getOriginalFilename()); //文件的扩展名
         File picture = new File(dirPath + randomStr + format);
 
