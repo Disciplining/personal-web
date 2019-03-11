@@ -12,13 +12,6 @@ function bootStrapVid()
     $('#form').bootstrapValidator
     (
         {
-            feedbackIcons:
-                {
-                    valid: 'glyphicon glyphicon-ok', //验证成功
-                    invalid: 'glyphicon glyphicon-remove', //验证失败
-                    validating: 'glyphicon glyphicon-refresh' //这个不能删 删了图标会显示不出来
-                },
-
             fields:
                 {
                     name:

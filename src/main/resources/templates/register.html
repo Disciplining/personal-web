@@ -35,6 +35,13 @@
         </script>
 
         <link href="/page/register/css/style.css" rel='stylesheet' type='text/css'/>
+
+        <style>
+            small.help-block
+            {
+                color: red!important;
+            }
+        </style>
     </head>
 
     <body>
@@ -76,12 +83,6 @@
             $('#main-form').bootstrapValidator
             (
                 {
-                    /*根据验证结果显示的各种图标*/
-                    feedbackIcons: {
-                                        valid: 'glyphicon glyphicon-ok', //验证成功
-                                        invalid: 'glyphicon glyphicon-remove', //验证失败
-                                        validating: 'glyphicon glyphicon-refresh' //这个不能删 删了图标会显示不出来
-                                    },
                     /*配置表单内字段的验证规则*/
                     /*js对象的key应该和name的属性值相同*/
                     fields: 

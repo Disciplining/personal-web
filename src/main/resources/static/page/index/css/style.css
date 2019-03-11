@@ -131,14 +131,25 @@ img {
 	   padding:10px 15px;
 	   color:#fff;
 }
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-    color: #ffde3a;
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus
+{
+    color: #fff;
     background-color: transparent;
 }
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-   color: #ffde3a;
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus
+{
+   color: #fff;
     background-color: transparent;
 }
+
+a.scroll:hover
+{
+    color: #ffde3a!important;
+}
+
 ul.nav.navbar-nav {
     margin-top: 10px;
 }

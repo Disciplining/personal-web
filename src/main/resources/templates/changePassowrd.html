@@ -35,6 +35,13 @@
         </script>
 
         <link href="/page/changePassowrd/css/style.css" rel='stylesheet' type='text/css'/>
+
+        <style>
+            small.help-block
+            {
+                color: red!important;
+            }
+        </style>
     </head>
 
     <body>
@@ -43,21 +50,21 @@
         </header>
 
         <div class="w3ls-contact"> <!-- form starts here -->
-            <form id="main-form" action="/changePassword" method="post">
+            <form id="main-form" action="/commonuser/changePassword" method="post">
                 <div class="agile-field-txt form-group">
                     <label>旧密码:</label>
-                    <input id="oldPassword" type="password" name="oldPassword" placeholder=" " required=""/>
+                    <input id="oldPassword" type="password" name="oldPassword"/>
                     <small id="error" style="color: red" th:text="${error}"></small>
                 </div>
 
                 <div class="agile-field-txt form-group">
                     <label>新密码:</label>
-                    <input type="password" name="newPassword" placeholder=" " required=""/>
+                    <input type="password" name="newPassword"/>
                 </div>
 
                 <div class="agile-field-txt form-group">
                     <label>确认新密码:</label>
-                    <input type="password" name="confirmNewPassword" placeholder=" " required=""/>
+                    <input type="password" name="confirmNewPassword"/>
                 </div>
                 
                 <div class="w3ls-contact  w3l-sub">
@@ -75,12 +82,6 @@
             $('#main-form').bootstrapValidator
             (
                 {
-                    /*根据验证结果显示的各种图标*/
-                    feedbackIcons: {
-                                        valid: 'glyphicon glyphicon-ok', //验证成功
-                                        invalid: 'glyphicon glyphicon-remove', //验证失败
-                                        validating: 'glyphicon glyphicon-refresh' //这个不能删 删了图标会显示不出来
-                                    },
                     /*配置表单内字段的验证规则*/
                     /*js对象的key应该和name的属性值相同*/
                     fields: 
