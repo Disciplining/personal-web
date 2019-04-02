@@ -5,7 +5,7 @@ server:
 # 数据库
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/my_web
     username: root
     password: root123
@@ -17,4 +17,4 @@ mybatis:
 
 # 上传图片存储总目录
 cbs:
-  imagesPath: file:/upload/mainPicture/
+  imagesPath: file:/media/root/MyDisk/material/事务/我的事务/项目-个人小网站/AllProject/upload/mainPicture/

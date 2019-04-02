@@ -64,7 +64,7 @@ public class DirectoryPath
     /**
      * 资源下载的资源目录
      */
-    public static final String RESOURCE_DOWNLOAD_FILE_DIR = "/upload/resourceDownload/";
+    public static final String RESOURCE_DOWNLOAD_FILE_DIR = "/media/root/MyDisk/material/事务/我的事务/项目-个人小网站/AllProject/upload/resourceDownload/";
 
     /*---------------------------------华丽的分割线---------------------------------*/
 
