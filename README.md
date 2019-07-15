@@ -1,4 +1,4 @@
-#### <font color="blie">简介</font>
+#### <font color="blue">简介</font>
 - ###### 这是一个个人的小网站.
 - ###### 大三上学期编写，为了练习mybatis、shiro、spring-boot框架.
 - ###### 主要功能包括
