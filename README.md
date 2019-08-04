@@ -11,7 +11,7 @@
 - ###### 前端技术运用不成熟，因为不熟悉前端技术，npm、webpack、less等技术都不有运用.
 
 #### <center>界面展示</center>
-![输入图片说明](https://images.gitee.com/uploads/images/2019/0715/132425_da108f4c_2255764.png "133318_d2499e5f_2255764.png")
-![输入图片说明](https://images.gitee.com/uploads/images/2019/0715/132457_33961808_2255764.png "133345_17e3a1a6_2255764.png")
-![输入图片说明](https://images.gitee.com/uploads/images/2019/0715/132607_d6530070_2255764.png "133335_df5c153b_2255764.png")
-![输入图片说明](https://images.gitee.com/uploads/images/2019/0715/132338_33e74c24_2255764.png "133611_58c40b97_2255764.png")
+![输入图片说明](https://github.com/Disciplining/personal-web/blob/master/screenshot/01.png")
+![输入图片说明](https://github.com/Disciplining/personal-web/blob/master/screenshot/02.png")
+![输入图片说明](https://github.com/Disciplining/personal-web/blob/master/screenshot/03.png")
+![输入图片说明](https://github.com/Disciplining/personal-web/blob/master/screenshot/04.png")
